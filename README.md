@@ -42,3 +42,35 @@ python3 -m http.server 8000
 - The contact form has no `action` attribute, so it does not submit anywhere.
 - Booking embeds an external Google Form.
 - Google Tag Manager (`GTM-M3J9CBV4`) loads on every page.
+
+## Photos
+
+Job photos were refreshed on 2026-08-03. All images are re-encoded with no
+EXIF metadata, sized for their slot, and kept roughly 100-200 KB each.
+
+| file | where it appears |
+|---|---|
+| `residential-front.jpg` | home hero, Residential card, **and the social/OG preview image on every page** |
+| `residential-backyard.jpg` | Residential card (services), gallery tile |
+| `work-1.jpg` | home hero portrait, About "at work" |
+| `work-2.jpg` | gallery tile |
+| `work-3.jpg` | "Our promise" pair (home), About |
+| `work-4.jpg` | "Our promise" pair (home), gallery tile |
+| `work-5.jpg` | Services + About hero |
+| `work-6.jpg` | Commercial card (home + services) |
+| `work-7.jpg` | Custom Packages card (home + services) |
+| `team-kyden.jpg`, `team-charles.jpg` | About — staff headshots |
+
+Spares, in the repo but not yet placed on any page — swap one in by changing
+an `src`, or ask for a section to show them off:
+
+| file | what it is |
+|---|---|
+| `work-8.jpg` | Popeyes storefront (commercial) |
+| `work-9.jpg` | green cottage in the woods (residential) |
+| `before-after-gutters.jpg` | gutter clean-out, before/after split |
+| `before-after-storefront.jpg` | storefront glass, before/after split |
+
+Replacing a photo: keep the **same filename** and the site picks it up with no
+HTML edits. Landscape slots are 4:3, portrait slots are 3:4; anything else gets
+centre-cropped by `object-fit: cover`.
