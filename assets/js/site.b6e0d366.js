@@ -89,8 +89,9 @@
     if (href.indexOf('tel:') === 0) return push('cn_phone_click', href.replace('tel:', ''));
     if (href.indexOf('mailto:') === 0) return push('cn_email_click', href.replace('mailto:', ''));
 
-    // any link into the booking/quote flow
-    if (href.indexOf('/booking/') === 0 || /quote/i.test(a.textContent || '')) {
+    // any link into the booking/quote flow (paths are relative, so match the
+    // segment rather than a leading slash)
+    if (/(^|\/)booking\/?$/.test(href) || /quote/i.test(a.textContent || '')) {
       push('cn_quote_click', (a.textContent || '').trim().slice(0, 40));
     }
   }, true);
