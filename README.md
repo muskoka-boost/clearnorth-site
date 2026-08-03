@@ -8,7 +8,8 @@ captured 2026-08-02 (site last modified 2026-07-29).
 ```
 index.html              home
 services/index.html     services
-service-areas/index.html
+service-areas/index.html            hub — links to all 24 area pages
+service-areas/<area>/index.html     one landing page per service area
 about-us/index.html
 faq/index.html
 contact/index.html
@@ -23,6 +24,27 @@ robots.txt sitemap.xml site.webmanifest
 Every page is self-contained HTML with inline `<style>` blocks — there is no
 build step and no CSS framework. To change text or styling, edit the `.html`
 file directly.
+
+## Service-area pages
+
+Each community has its own page at `/service-areas/<slug>/`, with copy written
+for that area — property types, the kind of grime that turns up there, and how
+bookings work locally. They are reachable only from the boxes on
+`/service-areas/`, deliberately **not** from the nav bar.
+
+The 24 areas, in the order they appear on the hub page:
+
+| group | areas |
+|---|---|
+| GTA | `toronto` `scarborough` `markham` `mississauga` `york-region` |
+| Durham | `durham-region` `pickering` `ajax` `whitby` `oshawa` `courtice` `bowmanville` `clarington` `hampton` |
+| Northumberland, Quinte & Kawarthas | `peterborough` `kawartha-lakes` `port-hope` `cobourg` `brighton` `trenton` `hastings-county` |
+| Cottage country | `muskoka` `haliburton` `parry-sound` |
+
+Adding another area means copying an existing folder, changing the copy, then
+adding a box to the grid on `/service-areas/` and a `<url>` to `sitemap.xml`.
+Header, footer and styling are duplicated into each page, the same as every
+other page on the site — there is still no build step.
 
 ## Previewing locally
 
