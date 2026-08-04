@@ -105,6 +105,18 @@ python3 -m http.server 8000
   both when the site moves to **https://www.clearnorthwc.com/**. The one page that
   keeps its noindex is `/quote-submitted/` — it is a confirmation page, which is also
   why it is deliberately absent from `sitemap.xml`.
+- **The service list is duplicated in three places** and they have to agree, because
+  a page that advertises something the business does not do is the expensive kind of
+  mistake: the nine cards on `/services/`, the "Beyond the glass" snippet on all 36
+  service-area pages, and the *Services for quote* checkboxes on `/booking/`. The
+  current list is residential and commercial window cleaning, screen &amp; track
+  cleaning, screen repair, gutter cleaning, soft washing, pressure washing,
+  post-construction cleaning and maintenance plans. Screen repair, gutter cleaning,
+  soft washing and pressure washing are the newest, and carry a red **New** badge on
+  the `/services/` exterior row and on every area-page snippet — those badges are one
+  `<span>` each and should come off once the services stop being news.
+- The home page and the FAQ still describe the window-cleaning services only; neither
+  mentions the four newer ones.
 - The contact form has no `action` attribute, so it does not submit anywhere.
 - **The booking form** is plain HTML posting to Formspree
   (`https://formspree.io/f/moeaaqly`) — it replaced an embedded Google Form, question
