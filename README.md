@@ -56,7 +56,18 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## Going live on clear.muskokadigitalboost.ca
+## Branches
+
+| branch | for | indexable |
+|---|---|---|
+| `main` | previews — GitHub Pages, and the temp customer preview at `clear.muskokadigitalboost.ca` | no |
+| `production-launch` | the real launch at `https://www.clearnorthwc.com/` | yes |
+
+The previews stay `noindex` on purpose. Two crawlable copies of the same site
+compete with each other in search, and a temp preview URL is exactly the kind
+of thing that ends up outranking the real domain if it is left open.
+
+## Going live on www.clearnorthwc.com
 
 This branch is the launch-ready copy. What differs from `main`:
 
@@ -65,30 +76,39 @@ This branch is the launch-ready copy. What differs from `main`:
 | every `.html` except `404.html` | `noindex,nofollow` meta removed |
 | `robots.txt` | `Disallow: /` → `Allow: /` plus a `Sitemap:` line |
 | `404.html` | `<base href="/clearnorth-site/">` → `<base href="/">` |
+| every absolute URL | `clear.muskokadigitalboost.ca` → `www.clearnorthwc.com` |
+
+That last row covers the canonical tags, `og:url`, `og:image`,
+`twitter:image`, the JSON-LD business schema and `sitemap.xml`. The "Made by
+muskokadigitalboost.ca" footer credit is a different domain and is unchanged.
 
 `404.html` keeps its own `noindex` — error pages should stay out of the index.
 
 Deploying this branch depends on where the domain is served from:
 
-- **Existing host (whatever serves the domain today)** — upload the branch
-  contents as-is. Nothing else needs changing.
+- **Any ordinary web host** — upload the branch contents as-is. Nothing else
+  needs changing.
 - **GitHub Pages** — add a `CNAME` file at the repo root containing
-  `clear.muskokadigitalboost.ca`, point the DNS record at GitHub, set the
-  custom domain in the repo's Pages settings, and change the
+  `www.clearnorthwc.com`, point the DNS record at GitHub, set the custom
+  domain in the repo's Pages settings, and change the
   `.github/workflows/deploy.yml` trigger from `main` to this branch. Without
   the `CNAME` file, Pages will keep serving the project path.
 
-After launch, submit `https://clear.muskokadigitalboost.ca/sitemap.xml` in
-Google Search Console so the 24 service-area pages get picked up.
+Pick one hostname and redirect the other — serving the site at both
+`www.clearnorthwc.com` and `clearnorthwc.com` splits the SEO between them.
+The canonical tags here point at the `www.` form.
+
+After launch, submit `https://www.clearnorthwc.com/sitemap.xml` in Google
+Search Console so the 24 service-area pages get picked up.
 
 ## Notes
 
-- **This is the production branch (`production-launch`).** Unlike `main`, it is
-  crawlable: the `noindex,nofollow` meta is gone from every page, `robots.txt`
-  allows all crawlers and points at the sitemap, and `404.html` uses `<base
-  href="/">` for a domain root rather than the GitHub Pages project path.
-  Canonical URLs and `sitemap.xml` already point at
-  `https://clear.muskokadigitalboost.ca`. See "Going live" below.
+- **This is the production branch (`production-launch`), aimed at
+  `https://www.clearnorthwc.com/`.** Unlike `main`, it is crawlable: the
+  `noindex,nofollow` meta is gone from every page, `robots.txt` allows all
+  crawlers and points at the sitemap, `404.html` uses `<base href="/">` for a
+  domain root rather than the GitHub Pages project path, and every absolute
+  URL points at the production domain. See "Going live" above.
 - The contact form has no `action` attribute, so it does not submit anywhere.
 - Booking embeds an external Google Form.
 - Google Tag Manager (`GTM-M3J9CBV4`) loads on every page.
