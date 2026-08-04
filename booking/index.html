@@ -7,8 +7,42 @@
     *{box-sizing:border-box}
     body{margin:0;background:#fafafa;color:#121212;font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
     a{color:#9e0c24}a:hover{color:#c8102e}
+
+    /* Quote form. Replaces the embedded Google Form — plain HTML posting to
+       Formspree, so it inherits the site's type and colours and works with JS off. */
+    input,textarea,select,button{font-family:Manrope,sans-serif}
+    .cn-form{display:flex;flex-direction:column;gap:24px}
+    .cn-fq{display:flex;flex-direction:column;gap:9px}
+    /* Fieldsets stay block-level on purpose: a flex fieldset lays its legend out
+       inconsistently across browsers, so the spacing here is done with margins. */
+    .cn-fs{display:block;border:0;padding:0;margin:0;min-width:0}
+    .cn-fs>legend{padding:0;margin:0 0 9px}
+    .cn-fs>.cn-help{margin:-4px 0 9px}
+    .cn-fs>.cn-input,.cn-fs>.cn-err{margin-top:9px}
+    .cn-q{font-size:14.5px;font-weight:700;color:#2e2e33}
+    .cn-q .cn-req{color:#c8102e}
+    .cn-help{font-size:13.5px;font-weight:500;color:#8a8f94;margin:-4px 0 2px}
+    .cn-input{width:100%;padding:13px 14px;border:1px solid #dcdce0;border-radius:12px;font-size:15px;font-weight:500;color:#121212;background:#fff;transition:.15s}
+    .cn-input::placeholder{color:#a6a9ae;font-weight:500}
+    .cn-input:focus{outline:none;border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
+    textarea.cn-input{resize:vertical}
+    .cn-opts{display:flex;flex-direction:column;gap:8px}
+    .cn-opts.cn-row{flex-direction:row;flex-wrap:wrap}
+    .cn-opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e6e6e9;border-radius:12px;background:#fff;font-size:15px;font-weight:600;color:#2e2e33;cursor:pointer;transition:.15s}
+    .cn-opts.cn-row .cn-opt{flex:1 1 130px}
+    .cn-opt:hover{border-color:#c8102e}
+    .cn-opt:focus-within{border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
+    .cn-opt:has(input:checked){border-color:#c8102e;background:#fcebee}
+    .cn-opt input{width:18px;height:18px;flex:none;margin:0;accent-color:#c8102e}
+    .cn-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .cn-err{display:none;font-size:13px;font-weight:600;color:#c8102e}
+    .cn-bad>.cn-err,.cn-err.cn-show{display:block}
+    .cn-submit{padding:16px;border:0;border-radius:12px;background:#c8102e;color:#fff;font-weight:700;font-size:16px;cursor:pointer;transition:.15s}
+    .cn-submit[disabled]{opacity:.6;cursor:default}
+    .cn-note{font-size:13px;color:#8a8f94;text-align:center;margin:0}
+    .cn-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
     @media(max-width:900px){.cn-book{grid-template-columns:1fr !important}}
-    @media(max-width:640px){.cn-ph1{font-size:36px !important}}
+    @media(max-width:640px){.cn-ph1{font-size:36px !important}.cn-grid2{grid-template-columns:1fr}}
   </style><style>
     @media (max-width: 1080px){
       .cn-desktop-nav{ display:none !important; }
@@ -176,8 +210,113 @@ img{ max-width:100%; }
       Every quote is completely free with no commitment. We'll assess your property and give you a clear price before any work begins.
     </div>
   </div>
-  <div style="background: rgb(255, 255, 255); border: 1px solid rgb(230, 230, 233); border-radius: 22px; padding: 12px; box-shadow: rgba(18, 18, 18, 0.4) 0px 22px 50px -34px;">
-    <iframe title="ClearNorth quote request form" src="https://docs.google.com/forms/d/e/1FAIpQLSfEHVbrTbZ9nh6ShX2tIZgqE1W2hxekh_Lut3MXjPfI_XliaQ/viewform?embedded=true" loading="lazy" style="width: 100%; height: 1100px; border: 0px; border-radius: 14px;">Loading form…</iframe>
+  <div class="cn-form-card" style="background: rgb(255, 255, 255); border: 1px solid rgb(230, 230, 233); border-radius: 22px; padding: 30px; box-shadow: rgba(18, 18, 18, 0.4) 0px 22px 50px -34px;">
+    <h2 style="font-family: &quot;Space Grotesk&quot;, sans-serif; font-size: 24px; letter-spacing: -0.01em; margin: 0px 0px 6px;">Request for quote</h2>
+    <p style="font-size: 14.5px; line-height: 1.6; color: rgb(138, 143, 148); margin: 0px 0px 26px;">The following questions will allow us to more accurately deliver a quote for your home or business.</p>
+
+    <form class="cn-form" data-cn-quote action="https://formspree.io/f/moeaaqly" method="POST">
+      <input type="hidden" name="_subject" value="New quote request — ClearNorth website">
+      <input class="cn-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <fieldset class="cn-fs">
+        <legend class="cn-q">Property type <span class="cn-req">*</span></legend>
+        <div class="cn-opts cn-row">
+          <label class="cn-opt"><input type="radio" name="Property type" value="Residential (home)" required> Residential (home)</label>
+          <label class="cn-opt"><input type="radio" name="Property type" value="Commercial (business)"> Commercial (business)</label>
+        </div>
+      </fieldset>
+
+      <label class="cn-fq">
+        <span class="cn-q">Name <span class="cn-req">*</span></span>
+        <input class="cn-input" type="text" name="Name" autocomplete="name" placeholder="Your name" required>
+      </label>
+
+      <label class="cn-fq">
+        <span class="cn-q">Address <span class="cn-req">*</span></span>
+        <textarea class="cn-input" name="Address" rows="2" autocomplete="street-address" placeholder="Street, city, postal code" required></textarea>
+      </label>
+
+      <fieldset class="cn-fs" data-req-group="Please select at least one service.">
+        <legend class="cn-q">Services for quote <span class="cn-req">*</span></legend>
+        <p class="cn-help">Select all that apply to your needs.</p>
+        <div class="cn-opts">
+          <label class="cn-opt"><input type="checkbox" name="Services" value="Exterior Window Cleaning"> Exterior Window Cleaning</label>
+          <label class="cn-opt"><input type="checkbox" name="Services" value="Interior Window Cleaning"> Interior Window Cleaning</label>
+          <label class="cn-opt"><input type="checkbox" name="Services" value="Screen Cleaning"> Screen Cleaning</label>
+          <label class="cn-opt"><input type="checkbox" name="Services" value="Screen Repair"> Screen Repair</label>
+          <label class="cn-opt"><input type="checkbox" name="Services" value="Pressure Washing"> Pressure Washing</label>
+          <label class="cn-opt"><input id="cn-svc-other" type="checkbox" name="Services" value="Other"> Other</label>
+        </div>
+        <input class="cn-input" type="text" name="Other service" placeholder="Something else? Tell us what you need" data-ticks="cn-svc-other">
+        <span class="cn-err" role="alert"></span>
+      </fieldset>
+
+      <fieldset class="cn-fs">
+        <legend class="cn-q">Number of stories above ground <span class="cn-req">*</span></legend>
+        <div class="cn-opts cn-row">
+          <label class="cn-opt"><input type="radio" name="Stories above ground" value="1" required> 1</label>
+          <label class="cn-opt"><input type="radio" name="Stories above ground" value="2"> 2</label>
+          <label class="cn-opt"><input type="radio" name="Stories above ground" value="3"> 3</label>
+          <label class="cn-opt"><input id="cn-storeys-other" type="radio" name="Stories above ground" value="Other"> Other</label>
+        </div>
+        <input class="cn-input" type="text" name="Stories (other)" placeholder="More than 3? Tell us how many" data-ticks="cn-storeys-other">
+      </fieldset>
+
+      <fieldset class="cn-fs">
+        <legend class="cn-q">Basement windows included <span class="cn-req">*</span></legend>
+        <div class="cn-opts cn-row">
+          <label class="cn-opt"><input type="radio" name="Basement windows included" value="Yes" required> Yes</label>
+          <label class="cn-opt"><input type="radio" name="Basement windows included" value="No"> No</label>
+        </div>
+      </fieldset>
+
+      <div class="cn-grid2">
+        <label class="cn-fq">
+          <span class="cn-q">Approximate number of windows <span class="cn-req">*</span></span>
+          <input class="cn-input" type="text" name="Approximate number of windows" inputmode="numeric" placeholder="e.g. 20" required>
+        </label>
+        <label class="cn-fq">
+          <span class="cn-q">Approximate square footage <span class="cn-req">*</span></span>
+          <input class="cn-input" type="text" name="Approximate square footage" inputmode="numeric" placeholder="e.g. 2,000 sq ft" required>
+        </label>
+      </div>
+
+      <div class="cn-grid2">
+        <label class="cn-fq">
+          <span class="cn-q">Email <span class="cn-req">*</span></span>
+          <input class="cn-input" type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
+        </label>
+        <label class="cn-fq">
+          <span class="cn-q">Phone number <span class="cn-req">*</span></span>
+          <input class="cn-input" type="tel" name="Phone number" autocomplete="tel" placeholder="289-943-4395" required>
+        </label>
+      </div>
+
+      <fieldset class="cn-fs" data-req-group="Please choose at least one way for us to reach you.">
+        <legend class="cn-q">Preference for contact <span class="cn-req">*</span></legend>
+        <p class="cn-help">Check any of the following and we will reach out to you with your quote.</p>
+        <div class="cn-opts cn-row">
+          <label class="cn-opt"><input type="checkbox" name="Preferred contact" value="Email"> Email</label>
+          <label class="cn-opt"><input type="checkbox" name="Preferred contact" value="Text/SMS"> Text/SMS</label>
+          <label class="cn-opt"><input type="checkbox" name="Preferred contact" value="Phone"> Phone</label>
+        </div>
+        <span class="cn-err" role="alert"></span>
+      </fieldset>
+
+      <label class="cn-fq">
+        <span class="cn-q">Where did you hear about us?</span>
+        <input class="cn-input" type="text" name="Where did you hear about us" placeholder="Google, Facebook, a neighbour…">
+      </label>
+
+      <label class="cn-fq">
+        <span class="cn-q">Additional notes</span>
+        <textarea class="cn-input" name="Additional notes" rows="4" placeholder="Anything else we should know before quoting?"></textarea>
+      </label>
+
+      <p class="cn-err" data-form-error role="alert" style="text-align: center;"></p>
+      <button class="cn-submit cnh-4" type="submit">Request my free quote</button>
+      <p class="cn-note">Free and no-obligation. We usually reply within one business day.</p>
+    </form>
   </div></section><div class="sc-host" data-sc-name="SiteFooter"><footer style="font-family: Manrope, sans-serif; background: rgb(18, 18, 18); color: rgb(212, 212, 216);">
   <div class="cn-foot-grid" style="max-width: 1200px; margin: 0px auto; padding: 60px 24px 30px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px;">
     <div>
@@ -229,4 +368,5 @@ img{ max-width:100%; }
   <a href="tel:2899434395" class="cn-sticky-call" style="display: none; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; border-radius: 999px; background: rgb(18, 18, 18); color: rgb(255, 255, 255); text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: rgba(18, 18, 18, 0.9) 0px 14px 30px -12px;">☎ Call</a></div></div></div></div>
 
 <script src="../assets/js/site.b6e0d366.js" defer></script>
+<script src="../assets/js/quote-form.d22f0a7d.js" defer></script>
 </body></html>
