@@ -56,11 +56,39 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
+## Going live on clear.muskokadigitalboost.ca
+
+This branch is the launch-ready copy. What differs from `main`:
+
+| file | change |
+|---|---|
+| every `.html` except `404.html` | `noindex,nofollow` meta removed |
+| `robots.txt` | `Disallow: /` → `Allow: /` plus a `Sitemap:` line |
+| `404.html` | `<base href="/clearnorth-site/">` → `<base href="/">` |
+
+`404.html` keeps its own `noindex` — error pages should stay out of the index.
+
+Deploying this branch depends on where the domain is served from:
+
+- **Existing host (whatever serves the domain today)** — upload the branch
+  contents as-is. Nothing else needs changing.
+- **GitHub Pages** — add a `CNAME` file at the repo root containing
+  `clear.muskokadigitalboost.ca`, point the DNS record at GitHub, set the
+  custom domain in the repo's Pages settings, and change the
+  `.github/workflows/deploy.yml` trigger from `main` to this branch. Without
+  the `CNAME` file, Pages will keep serving the project path.
+
+After launch, submit `https://clear.muskokadigitalboost.ca/sitemap.xml` in
+Google Search Console so the 24 service-area pages get picked up.
+
 ## Notes
 
-- Pages carry `<meta name="robots" content="noindex,nofollow">` and
-  `robots.txt` disallows all crawlers — this mirrors the live staging setup.
-  Remove both when the site goes to production.
+- **This is the production branch (`production-launch`).** Unlike `main`, it is
+  crawlable: the `noindex,nofollow` meta is gone from every page, `robots.txt`
+  allows all crawlers and points at the sitemap, and `404.html` uses `<base
+  href="/">` for a domain root rather than the GitHub Pages project path.
+  Canonical URLs and `sitemap.xml` already point at
+  `https://clear.muskokadigitalboost.ca`. See "Going live" below.
 - The contact form has no `action` attribute, so it does not submit anywhere.
 - Booking embeds an external Google Form.
 - Google Tag Manager (`GTM-M3J9CBV4`) loads on every page.
