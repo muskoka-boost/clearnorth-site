@@ -8,7 +8,7 @@ captured 2026-08-02 (site last modified 2026-07-29).
 ```
 index.html              home
 services/index.html     services
-service-areas/index.html            hub — links to all 24 area pages
+service-areas/index.html            hub — links to all 32 area pages
 service-areas/<area>/index.html     one landing page per service area
 about-us/index.html
 faq/index.html
@@ -32,14 +32,25 @@ for that area — property types, the kind of grime that turns up there, and how
 bookings work locally. They are reachable only from the boxes on
 `/service-areas/`, deliberately **not** from the nav bar.
 
-The 24 areas, in the order they appear on the hub page:
+The 32 areas, in the order they appear on the hub page:
 
 | group | areas |
 |---|---|
 | GTA | `toronto` `scarborough` `markham` `mississauga` `york-region` |
 | Durham | `durham-region` `pickering` `ajax` `whitby` `oshawa` `courtice` `bowmanville` `clarington` `hampton` |
 | Northumberland, Quinte & Kawarthas | `peterborough` `kawartha-lakes` `port-hope` `cobourg` `brighton` `trenton` `hastings-county` |
-| Cottage country | `muskoka` `haliburton` `parry-sound` |
+| Muskoka | `muskoka` `bracebridge` `gravenhurst` `huntsville` `muskoka-lakes` `lake-of-bays` `georgian-bay-township` `port-carling` `bala` |
+| Haliburton & Parry Sound | `haliburton` `parry-sound` |
+
+Muskoka is broken down to the municipality: the district's six — the towns of
+Bracebridge, Gravenhurst and Huntsville, and the townships of Muskoka Lakes,
+Lake of Bays and Georgian Bay — plus Port Carling and Bala, villages inside
+Muskoka Lakes township that people search for by name. The `muskoka` page
+lists all eight and links down to them.
+
+Each page ends with a **Nearby areas** block. Those lists are geographic —
+somewhere a customer could plausibly drive from, not just another page on the
+site. Check a map before adding one.
 
 Adding another area means copying an existing folder, changing the copy, then
 adding a box to the grid on `/service-areas/` and a `<url>` to `sitemap.xml`.
