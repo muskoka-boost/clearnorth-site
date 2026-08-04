@@ -1,19 +1,25 @@
 // ClearNorth — quote form on /booking/. Progressive enhancement only: the form is a
 // plain POST to Formspree and works with this file absent or blocked. Everything here
 // only makes it nicer — inline validation for the checkbox groups (which HTML cannot
-// express), an in-page thank-you instead of Formspree's redirect, and a conversion
-// event for GTM.
+// express), and submitting in the background so the browser never leaves the site.
+// Either way the visitor ends up on /quote-submitted/.
 (function () {
   var form = document.querySelector('[data-cn-quote]');
   if (!form) return;
+
+  var DONE = '../quote-submitted/';
 
   var button = form.querySelector('[type="submit"]');
   var buttonText = button ? button.textContent : '';
   var formError = form.querySelector('[data-form-error]');
 
-  function push(event, detail) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: event, cn_detail: detail, cn_page: location.pathname });
+  // `_next` is where Formspree sends the browser when it posts the form itself. It is
+  // hard-coded to the production host in the HTML, since that is the only place a real
+  // visitor hits it; rewriting it to whatever host is actually serving the page keeps
+  // staging (and any preview host) from bouncing people onto the live site.
+  var next = form.querySelector('input[name="_next"]');
+  if (next && window.location.origin) {
+    next.value = location.origin + '/quote-submitted/';
   }
 
   // ---- "Other" free-text boxes ----
@@ -61,30 +67,6 @@
     formError.classList.add('cn-show');
   }
 
-  function reveal(el) {
-    // The scroll-reveal CSS hides fresh children of a section block until site.js marks
-    // them in. Anything injected after that pass has to mark itself, or it stays invisible.
-    el.classList.add('cn-in');
-    [].forEach.call(el.querySelectorAll('*'), function (kid) { kid.classList.add('cn-in'); });
-  }
-
-  function thankYou() {
-    var panel = document.createElement('div');
-    panel.setAttribute('role', 'status');
-    panel.style.cssText = 'text-align:center;padding:26px 6px';
-    panel.innerHTML =
-      '<div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:#fcebee;' +
-      'display:flex;align-items:center;justify-content:center;font-size:28px;color:#c8102e">✓</div>' +
-      '<h3 style="font-family:\'Space Grotesk\',sans-serif;font-size:24px;margin:0 0 10px">Thanks — your request is in.</h3>' +
-      '<p style="font-size:15px;line-height:1.7;color:#3f3f46;margin:0 auto;max-width:420px">' +
-      'We have your details and will get back to you with a free, no-obligation quote, usually within one ' +
-      'business day. Need us sooner? Call <a href="tel:2899434395">289-943-4395</a>.</p>';
-
-    form.replaceWith(panel);
-    reveal(panel);
-    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
   form.addEventListener('submit', function (ev) {
     // Native validation has already passed by the time this fires; only the group
     // rules are left to check.
@@ -122,8 +104,10 @@
       headers: { Accept: 'application/json' }
     }).then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      push('cn_quote_submit', 'booking form');
-      thankYou();
+      // Same destination Formspree's own `_next` redirect uses, so both routes through
+      // the form land on one confirmation page — which is where the conversion is
+      // counted, and which sends people home from there.
+      location.assign(DONE);
     }).catch(function () {
       showError('Sorry — that did not send. Please try again, or reach us at 289-943-4395 or booking@clearnorthwc.com.');
       if (button) {

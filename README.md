@@ -1,7 +1,21 @@
 # ClearNorth Window Cleaning — website
 
-Static copy of the live site at https://clear.muskokadigitalboost.ca/
-captured 2026-08-02 (site last modified 2026-07-29).
+## Domains
+
+- **Production — https://www.clearnorthwc.com/** — the final live site. This is the
+  real address of the business.
+- **Staging — https://clear.muskokadigitalboost.ca/** — a preview host only. It is
+  **not** the live site: don't hand it out, link to it, or put it on anything
+  printed.
+
+Every host named in the repo still points at **staging**: the `<link rel="canonical">`
+and `og:url` on each page, the `og:image`/`twitter:image` URLs, and every `<loc>` in
+`sitemap.xml`. Going live means replacing `clear.muskokadigitalboost.ca` with
+`www.clearnorthwc.com` across those, together with the noindex removal under
+[Notes](#notes).
+
+The single deliberate exception is `_next` in the booking form, which already points
+at production — see [Notes](#notes) for why.
 
 ## Structure
 
@@ -13,13 +27,19 @@ service-areas/<area>/index.html     one landing page per service area
 about-us/index.html
 faq/index.html
 contact/index.html
-booking/index.html
+booking/index.html      the quote form
+quote-submitted/index.html          confirmation after the form, redirects home
 privacy-policy/index.html
 assets/img/            photos + logo
 assets/fonts/          Manrope + Space Grotesk (self-hosted woff2)
-assets/js/site.*.js    nav toggle, FAQ accordion, scroll animations
+assets/js/site.*.js              nav toggle, FAQ accordion, scroll animations
+assets/js/quote-form.*.js        booking form — validation + background submit
+assets/js/quote-submitted.*.js   confirmation page — countdown + conversion event
 robots.txt sitemap.xml site.webmanifest
 ```
+
+JS filenames carry a content hash. Editing one means renaming it to match and
+updating the `<script src>` that points at it, otherwise browsers serve the old copy.
 
 Every page is self-contained HTML with inline `<style>` blocks — there is no
 build step and no CSS framework. To change text or styling, edit the `.html`
@@ -80,11 +100,34 @@ python3 -m http.server 8000
 ## Notes
 
 - Pages carry `<meta name="robots" content="noindex,nofollow">` and
-  `robots.txt` disallows all crawlers — this mirrors the live staging setup.
-  Remove both when the site goes to production.
+  `robots.txt` disallows all crawlers — this is the staging host keeping itself out
+  of search results, and it is also why the staging URL must not be shared. Remove
+  both when the site moves to **https://www.clearnorthwc.com/**. The one page that
+  keeps its noindex is `/quote-submitted/` — it is a confirmation page, which is also
+  why it is deliberately absent from `sitemap.xml`.
 - The contact form has no `action` attribute, so it does not submit anywhere.
-- Booking embeds an external Google Form.
-- Google Tag Manager (`GTM-M3J9CBV4`) loads on every page.
+- **The booking form** is plain HTML posting to Formspree
+  (`https://formspree.io/f/moeaaqly`) — it replaced an embedded Google Form, question
+  for question. Field names are the question text so the notification email reads like
+  the form, and the email field is named exactly `email` so Formspree sets the
+  reply-to from it.
+  - With JavaScript, `quote-form.js` validates the two "pick at least one" checkbox
+    groups, posts in the background and sends the browser to `/quote-submitted/`.
+  - Without JavaScript the browser posts the form itself and Formspree redirects to
+    the hidden `_next` field. That field is hard-coded to
+    `https://www.clearnorthwc.com/quote-submitted/`, since production is the only host
+    a real visitor ever submits from; `quote-form.js` rewrites it to whatever origin
+    is actually serving the page, so a normal staging visit stays on staging. **When
+    the site goes live this value is already correct — leave it on the production
+    host.**
+  - `/quote-submitted/` confirms the request and returns to the home page after 10
+    seconds. The redirect is a `<meta http-equiv="refresh">` so it happens with
+    JavaScript off; `quote-submitted.js` replaces it with a visible countdown that a
+    "Stay on this page" button can cancel.
+- Google Tag Manager (`GTM-M3J9CBV4`) loads on every page. It receives
+  `cn_phone_click`, `cn_email_click` and `cn_quote_click` from `site.js`, and
+  `cn_quote_submit` from the confirmation page — fired there rather than on submit so
+  it is not racing a page navigation, and so both submit routes count once.
 
 ## Photos
 
