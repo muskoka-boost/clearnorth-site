@@ -38,9 +38,9 @@ The 32 areas, in the order they appear on the hub page:
 |---|---|
 | GTA | `toronto` `scarborough` `markham` `mississauga` `york-region` |
 | Durham | `durham-region` `pickering` `ajax` `whitby` `oshawa` `courtice` `bowmanville` `clarington` `hampton` |
-| Northumberland, Quinte & Kawarthas | `peterborough` `kawartha-lakes` `port-hope` `cobourg` `brighton` `trenton` `hastings-county` |
-| Muskoka | `muskoka` `bracebridge` `gravenhurst` `huntsville` `muskoka-lakes` `lake-of-bays` `georgian-bay-township` `port-carling` `bala` |
-| Haliburton & Parry Sound | `haliburton` `parry-sound` |
+| Northumberland & Quinte | `port-hope` `cobourg` `brighton` `trenton` `hastings-county` |
+| Peterborough, the Kawarthas & Haliburton | `peterborough` `kawartha-lakes` `haliburton` |
+| Muskoka & Parry Sound | `muskoka` `bracebridge` `gravenhurst` `huntsville` `muskoka-lakes` `lake-of-bays` `georgian-bay-township` `port-carling` `bala` `parry-sound` |
 
 Muskoka is broken down to the municipality: the district's six — the towns of
 Bracebridge, Gravenhurst and Huntsville, and the townships of Muskoka Lakes,
@@ -48,9 +48,12 @@ Lake of Bays and Georgian Bay — plus Port Carling and Bala, villages inside
 Muskoka Lakes township that people search for by name. The `muskoka` page
 lists all eight and links down to them.
 
-Each page ends with a **Nearby areas** block. Those lists are geographic —
-somewhere a customer could plausibly drive from, not just another page on the
-site. Check a map before adding one.
+Each page ends with a **Nearby areas** block, and the hub groups areas by
+region. Both are geographic claims — check a map before changing either.
+Haliburton and Parry Sound are the easy mistake: both are cottage country, but
+Muskoka sits between them, so they are neither neighbours nor a group. Parry
+Sound belongs with Muskoka; Haliburton belongs with Kawartha Lakes, which it
+borders, and its closest towns are Dorset, Lake of Bays and Huntsville.
 
 Adding another area means copying an existing folder, changing the copy, then
 adding a box to the grid on `/service-areas/` and a `<url>` to `sitemap.xml`.
