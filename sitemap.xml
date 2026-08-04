@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.clearnorthwc.com/</loc><lastmod>2026-08-03</lastmod><priority>1.0</priority></url>
   <url><loc>https://www.clearnorthwc.com/services/</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.clearnorthwc.com/service-areas/</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/</loc><lastmod>2026-08-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.clearnorthwc.com/service-areas/toronto/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clearnorthwc.com/service-areas/scarborough/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clearnorthwc.com/service-areas/markham/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
@@ -27,6 +27,14 @@
   <url><loc>https://www.clearnorthwc.com/service-areas/muskoka/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clearnorthwc.com/service-areas/haliburton/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clearnorthwc.com/service-areas/parry-sound/</loc><lastmod>2026-08-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/bracebridge/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/gravenhurst/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/huntsville/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/muskoka-lakes/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/lake-of-bays/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/georgian-bay-township/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/port-carling/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.clearnorthwc.com/service-areas/bala/</loc><lastmod>2026-08-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.clearnorthwc.com/about-us/</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.clearnorthwc.com/faq/</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.clearnorthwc.com/contact/</loc><lastmod>2026-08-03</lastmod><priority>0.8</priority></url>
