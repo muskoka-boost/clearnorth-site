@@ -8,7 +8,7 @@ captured 2026-08-02 (site last modified 2026-07-29).
 ```
 index.html              home
 services/index.html     services
-service-areas/index.html            hub — links to all 32 area pages
+service-areas/index.html            hub — links to all 36 area pages
 service-areas/<area>/index.html     one landing page per service area
 about-us/index.html
 faq/index.html
@@ -32,7 +32,7 @@ for that area — property types, the kind of grime that turns up there, and how
 bookings work locally. They are reachable only from the boxes on
 `/service-areas/`, deliberately **not** from the nav bar.
 
-The 32 areas, in the order they appear on the hub page:
+The 36 areas, in the order they appear on the hub page:
 
 | group | areas |
 |---|---|
@@ -40,13 +40,20 @@ The 32 areas, in the order they appear on the hub page:
 | Durham | `durham-region` `pickering` `ajax` `whitby` `oshawa` `courtice` `bowmanville` `clarington` `hampton` |
 | Northumberland & Quinte | `port-hope` `cobourg` `brighton` `trenton` `hastings-county` |
 | Peterborough, the Kawarthas & Haliburton | `peterborough` `kawartha-lakes` `haliburton` |
-| Muskoka & Parry Sound | `muskoka` `bracebridge` `gravenhurst` `huntsville` `muskoka-lakes` `lake-of-bays` `georgian-bay-township` `port-carling` `bala` `parry-sound` |
+| Muskoka & the big three lakes | `muskoka` `lake-muskoka` `lake-rosseau` `lake-joseph` `bracebridge` `gravenhurst` `huntsville` `muskoka-lakes` `lake-of-bays` `georgian-bay-township` `port-carling` `bala` |
+| Parry Sound District | `parry-sound` `rosseau` |
 
-Muskoka is broken down to the municipality: the district's six — the towns of
-Bracebridge, Gravenhurst and Huntsville, and the townships of Muskoka Lakes,
-Lake of Bays and Georgian Bay — plus Port Carling and Bala, villages inside
-Muskoka Lakes township that people search for by name. The `muskoka` page
-lists all eight and links down to them.
+Muskoka is broken down two ways, because cottage owners and homeowners search
+differently. By municipality: the district's six — the towns of Bracebridge,
+Gravenhurst and Huntsville, and the townships of Muskoka Lakes, Lake of Bays
+and Georgian Bay — plus Port Carling and Bala, villages inside Muskoka Lakes
+that people search for by name. And by water: `lake-muskoka`, `lake-rosseau`
+and `lake-joseph`, the big three, which is how a cottage owner thinks of their
+own place. The `muskoka` page leads with the lakes and links down to both sets.
+
+Rosseau sits at the north end of Lake Rosseau but is in Seguin Township,
+**Parry Sound District** — not Muskoka. It is grouped and linked accordingly,
+and it is the closest served community to Parry Sound itself.
 
 Each page ends with a **Nearby areas** block, and the hub groups areas by
 region. Both are geographic claims — check a map before changing either.
