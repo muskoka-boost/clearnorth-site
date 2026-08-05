@@ -1,4 +1,4 @@
-// ClearNorth — quote form on /booking/. Progressive enhancement only: the form is a
+// ClearNorth — quote form on /request-a-quote/. Progressive enhancement only: the form is a
 // plain POST to Formspree and works with this file absent or blocked. Everything here
 // only makes it nicer — inline validation for the checkbox groups (which HTML cannot
 // express), and submitting in the background so the browser never leaves the site.

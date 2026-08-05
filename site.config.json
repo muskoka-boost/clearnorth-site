@@ -1,0 +1,84 @@
+{
+  "$comment": [
+    "Single source of truth for every absolute URL the site emits, and for whether the",
+    "site may be indexed. Change `active` (or pass --env=<name> to the script), then run",
+    "  node scripts/apply-site-config.mjs",
+    "which rewrites canonicals, og:url, og:image, twitter:image, schema URLs, the robots",
+    "meta tag, robots.txt and sitemap.xml across every page. Nothing else in the repo",
+    "should contain a hard-coded origin.",
+    "See DEPLOYMENT-CHECKLIST.md before switching `active` to \"production\"."
+  ],
+
+  "active": "client-preview",
+
+  "environments": {
+    "github-pages": {
+      "label": "GitHub Pages development preview",
+      "siteUrl": "https://muskoka-boost.github.io/clearnorth-site",
+      "indexable": false,
+      "robotsMeta": "noindex,nofollow",
+      "robotsTxt": "disallow-all",
+      "sitemapInRobots": false
+    },
+
+    "client-preview": {
+      "label": "Temporary client-preview host (private review only)",
+      "siteUrl": "https://clear.muskokadigitalboost.ca",
+      "indexable": false,
+      "robotsMeta": "noindex,nofollow",
+      "robotsTxt": "disallow-all",
+      "sitemapInRobots": false
+    },
+
+    "production": {
+      "label": "Final branded production site",
+      "siteUrl": "https://www.clearnorthwc.com",
+      "indexable": true,
+      "robotsMeta": null,
+      "robotsTxt": "allow",
+      "sitemapInRobots": true
+    }
+  },
+
+  "business": {
+    "name": "ClearNorth Window Cleaning",
+    "phone": "+1-289-943-4395",
+    "phoneDisplay": "289-943-4395",
+    "email": "booking@clearnorthwc.com",
+    "locality": "Hampton",
+    "region": "ON",
+    "country": "CA",
+    "sameAs": [
+      "https://www.instagram.com/clearnorthwindowcleaning",
+      "https://www.facebook.com/profile.php?id=61577981040005",
+      "https://www.tiktok.com/@clearnorthwindowcleaning"
+    ]
+  },
+
+  "$areaServedComment": "Genuine service areas only — every entry here has its own page under /service-areas/ or is a region those pages sit inside.",
+  "areaServed": [
+    "Hampton, Ontario",
+    "Clarington, Ontario",
+    "Durham Region, Ontario",
+    "Northumberland County, Ontario",
+    "Quinte West, Ontario",
+    "Hastings County, Ontario",
+    "Peterborough County, Ontario",
+    "City of Kawartha Lakes, Ontario",
+    "Haliburton County, Ontario",
+    "District of Muskoka, Ontario",
+    "Parry Sound District, Ontario",
+    "Greater Toronto Area, Ontario"
+  ],
+
+  "openGraph": {
+    "image": "/assets/img/og-clearnorth.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "ClearNorth Window Cleaning — hand-cleaned residential and commercial glass, based in Hampton, Ontario"
+  },
+
+  "noindexPaths": [
+    "/quote-submitted/"
+  ]
+}
