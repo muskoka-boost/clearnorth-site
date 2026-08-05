@@ -1,0 +1,1825 @@
+{
+  "$comment": [
+    "Structured record behind the 36 pages under /service-areas/.",
+    "sources          — where the geography and place facts were checked. Not rendered to visitors.",
+    "needsConfirmation — operational claims the pages deliberately do NOT make, pending owner",
+    "                    confirmation. See OWNER-CONFIRMATIONS.md. Do not turn one of these into",
+    "                    page copy without an answer from the business.",
+    "serviceMix       — which dedicated service pages this area links to, chosen for the area",
+    "                    rather than repeated identically on all 36.",
+    "mixNote          — one line, per area, on why that is the mix. Rendered on the page.",
+    "cleanIntro/ctaLine/faqNote — the three lines that were previously one sentence repeated",
+    "                    on all 36 pages. Rendered on the page.",
+    "indexation       — indexable | noindex-pending-confirmation | merge-candidate"
+  ],
+  "generated": "2026-08-05",
+  "count": 36,
+  "locations": [
+    {
+      "slug": "ajax",
+      "name": "Ajax",
+      "pageType": "town",
+      "parentRegion": "Durham Region",
+      "parentPage": "durham-region",
+      "childPages": [],
+      "context": [
+        "suburban",
+        "lakeshore"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Consistent subdivision housing means a predictable job, and the sensible add-ons are the ones that reach what a ladder is already up for — screens and gutters.",
+      "cleanIntro": "Interior and exterior glass, screens washed and refitted, sills and tracks cleared — including that stairwell window.",
+      "ctaLine": "Tell us the window count and whether you want screens and gutters too — one quote covers the lot.",
+      "faqNote": "Specific to Ajax property. The <a href=\"../../faq/\">general FAQ</a> covers the rest.",
+      "faqs": [
+        {
+          "q": "What is different about Ajax housing for window cleaning?",
+          "a": "Ajax is largely post-1990 subdivision, which means a consistent pattern: two storeys, vinyl or aluminium-clad casements, and a tall stairwell window over the front door. That last one is the reason the quote form asks about storeys — it is the single window that most often changes a price."
+        },
+        {
+          "q": "Is lakeside Ajax different from the north end?",
+          "a": "Somewhat. Duffins Bay and the Lakeside area get wind off Lake Ontario and the mineral haze that comes with it. Westney Heights and the north end deal with road film and spring pollen instead. Neither is dramatic; both change how quickly a clean stops looking clean."
+        },
+        {
+          "q": "Can screens and gutters be done on the same visit?",
+          "a": "Yes, and it is the cheaper way round — one crew, one set of ladder placements, one quote. Tick the services you want on the quote form and they are priced together."
+        },
+        {
+          "q": "Is a recurring schedule worth it on a newer house?",
+          "a": "It depends which way the glass faces. A back elevation over a fenced garden can go a year and still look fine; a front elevation on a collector road picks up film within a season. Most people here end up doing the front more often than the back, which is a perfectly reasonable thing to ask for."
+        }
+      ],
+      "sources": [
+        "https://www.ajax.ca/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "bala",
+      "name": "Bala",
+      "pageType": "village",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka-lakes",
+      "childPages": [],
+      "context": [
+        "village",
+        "lake",
+        "river",
+        "seasonal"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "residential-window-cleaning"
+      ],
+      "mixNote": "Open lake on one side and sheltered river on the other, so the list covers both the spray and the leaf debris.",
+      "cleanIntro": "Glass inside and out for lake-side and river-side property, with screens, sills and tracks.",
+      "ctaLine": "Tell us whether you are on the bay or the river and we will come back with a price.",
+      "faqNote": "About the lake and river sides. See the <a href=\"../../faq/\">general FAQ</a> for quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Where does Bala sit in relation to the lakes?",
+          "a": "At the south-west corner of Lake Muskoka, where the lake empties over Bala Falls into the Moon River. That puts it between the big-lake cottage shoreline and the quieter river and Torrance side, and both are covered here."
+        },
+        {
+          "q": "Is river-side property different from lake-side?",
+          "a": "In exposure, yes. Moon River and the Torrance side are more sheltered and more wooded, so it is pollen, leaf debris and insect activity rather than open-water spray. Bala Bay property gets the open-lake treatment instead."
+        },
+        {
+          "q": "Do you cover Glen Orchard and the surrounding area?",
+          "a": "Yes — Glen Orchard, Torrance and the properties along the Moon River. Mention the nearest road access when you ask; several of these are down private lanes that shape how the visit is planned."
+        },
+        {
+          "q": "What is the best week to have it done?",
+          "a": "After the pollen has finished and before the summer traffic, or in the fall once things have quietened down. A clean during a heavy pollen week in Bala will not look clean for long — we would rather tell you that than take the booking and have you disappointed."
+        }
+      ],
+      "sources": [
+        "https://www.muskokalakes.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "bowmanville",
+      "name": "Bowmanville",
+      "pageType": "town",
+      "parentRegion": "Durham Region",
+      "parentPage": "clarington",
+      "childPages": [],
+      "context": [
+        "town",
+        "heritage",
+        "storefront",
+        "home-ground"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "A heritage main street and century homes behind it, so storefront work and careful sash cleaning sit side by side here.",
+      "cleanIntro": "Interior and exterior glass, screens, sills and tracks — century sashes downtown and newer builds on the edges.",
+      "ctaLine": "Tell us about the house or the shopfront and we will come back with a free, no-obligation price.",
+      "faqNote": "About the town and its downtown. See the <a href=\"../../faq/\">general FAQ</a> for quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Do you clean the King Street storefronts?",
+          "a": "Yes. Downtown Bowmanville is a heritage main street, which means a lot of transom glass and original shopfront frames above the display windows — the part that gets missed. Ask about a repeating schedule; frontage in a walkable downtown is judged constantly."
+        },
+        {
+          "q": "What about the older homes around the historic core?",
+          "a": "Century homes with divided-light sashes and storm windows are common here. They take longer per window than a modern build, and it is the kind of glass where a regular schedule genuinely pays — old glass that never gets properly dirty is much easier to keep clear."
+        },
+        {
+          "q": "How near is Bowmanville to your base?",
+          "a": "Hampton is about ten minutes north of Bowmanville. This is the closest concentration of work to home, so scheduling here is more flexible than anywhere else on the site."
+        },
+        {
+          "q": "What is the best time of year for a heritage property?",
+          "a": "Late spring, once the pollen has passed, and again in the autumn if the house sits under mature trees. Old glass that never gets properly dirty is far easier to keep clear than old glass rescued once every few years — and gentler on the sashes."
+        }
+      ],
+      "sources": [
+        "https://www.clarington.net/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "bracebridge",
+      "name": "Bracebridge",
+      "pageType": "town",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "town",
+        "year-round",
+        "riverfront",
+        "storefront"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "cottage-window-cleaning",
+        "commercial-window-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "Year-round town and seasonal water in the same municipality, so both the storefront work and the cottage rhythm are on the list.",
+      "cleanIntro": "Interior and exterior glass for town homes, river property and Manitoba Street frontage alike.",
+      "ctaLine": "Tell us whether it is town, river or lake and we will come back with a price. No obligation.",
+      "faqNote": "Town and water answers. The <a href=\"../../faq/\">general FAQ</a> covers quotes, access and inclusions.",
+      "faqs": [
+        {
+          "q": "Is Bracebridge year-round work or seasonal?",
+          "a": "Both, and that is unusual for Muskoka. It is the district's largest town with a substantial year-round population, so town homes and Manitoba Street businesses book like anywhere else — while the river and lake properties around it run on the seasonal rhythm."
+        },
+        {
+          "q": "Do you clean the Manitoba Street shopfronts?",
+          "a": "Yes. The downtown is a heritage main street, so there is transom and upper-storey glass above the display windows that most cleans miss. Ask about a repeating schedule if frontage matters to you."
+        },
+        {
+          "q": "What about properties on the Muskoka River?",
+          "a": "Riverfront glass gets more insect activity and more damp-season film on shaded elevations than town glass does. Not dramatic, but enough to shorten how long a clean looks clean."
+        },
+        {
+          "q": "Do you do the falls-side and river properties?",
+          "a": "Yes. Property along the Muskoka River and around the falls is covered the same as the rest of town — the practical difference is more damp-season film on shaded elevations and more insect activity than a property a few streets up the hill."
+        }
+      ],
+      "sources": [
+        "https://www.bracebridge.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether commercial work can be scheduled outside normal trading hours."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "brighton",
+      "name": "Brighton",
+      "pageType": "municipality",
+      "parentRegion": "Northumberland County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "rural",
+        "shoreline",
+        "seasonal"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "cottage-window-cleaning"
+      ],
+      "mixNote": "Marsh-edge insect load and orchard dust make screens and exterior washing more useful here than they are inland.",
+      "cleanIntro": "Glass both sides, and the screens that catch far more here than they do a few kilometres inland.",
+      "ctaLine": "Tell us about the property and whether it is used year-round, and we will come back with a price.",
+      "faqNote": "About property near the marsh and the orchards. The <a href=\"../../faq/\">general FAQ</a> covers the rest.",
+      "faqs": [
+        {
+          "q": "Does being next to Presqu'ile change anything?",
+          "a": "The exposure does. Properties on the bay side and out toward Presqu'ile get wind off the water and the insect and spider activity that comes with a wetland and marsh edge — screens in particular collect far more here than a few kilometres inland."
+        },
+        {
+          "q": "Do you cover the orchards and rural properties?",
+          "a": "Yes. Brighton is apple country, and farm and orchard properties are part of the mix. Spring blossom and the dust of harvest traffic are both worth timing around — ask us and we will suggest when a clean will actually hold."
+        },
+        {
+          "q": "Are seasonal and part-time properties covered?",
+          "a": "Yes, and the same advice applies as at a cottage: tell us the weeks you are opening or closing up, how the property is reached, and whether anyone will be there. Those three answers shape the quote more than the window count."
+        },
+        {
+          "q": "Do screens need doing more often here than the glass?",
+          "a": "Often, yes. Marsh and shoreline insect activity fills a screen much faster than road film dirties a window, so plenty of Brighton properties are better served by an annual glass clean and a more frequent look at the screens than by doing both on the same cycle."
+        }
+      ],
+      "sources": [
+        "https://www.brighton.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "clarington",
+      "name": "Clarington",
+      "pageType": "municipality",
+      "parentRegion": "Durham Region",
+      "parentPage": "durham-region",
+      "childPages": [
+        "bowmanville",
+        "courtice",
+        "hampton"
+      ],
+      "context": [
+        "municipality",
+        "rural",
+        "home-ground"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Rural properties where one trip has to cover everything, which is why gutters and exterior washing belong on the same visit as the glass.",
+      "cleanIntro": "Glass, screens, sills and tracks, from the village houses to the farmhouses on the concessions.",
+      "ctaLine": "Tell us where in Clarington and what you want included — quote free, no commitment either way.",
+      "faqNote": "About the municipality we are based in. The <a href=\"../../faq/\">general FAQ</a> covers everything else.",
+      "faqs": [
+        {
+          "q": "What does Clarington cover?",
+          "a": "Bowmanville, Courtice, Newcastle, Orono, Hampton and the rural concessions between them. Several of those have their own pages; this one is the municipal overview and the route into them."
+        },
+        {
+          "q": "Is Hampton really your base?",
+          "a": "Yes — the business is run from Hampton, a village in the middle of Clarington. That is why this municipality gets more scheduling flexibility than anywhere else we cover."
+        },
+        {
+          "q": "Do you go out to the rural concessions and farms?",
+          "a": "Yes. Farmhouses and rural properties across the concessions are covered, and the practical detail to flag is the approach: a long gravel lane, a working yard or a seasonal road changes the timing more than the window count."
+        },
+        {
+          "q": "Can gutters and siding be done at the same time?",
+          "a": "Yes, and on a rural property it usually makes most sense — getting a crew and ladders to a farmhouse is the fixed cost, so gutters, soft washing and glass on one visit beats three separate trips."
+        },
+        {
+          "q": "Do you cover Newcastle and Orono as well?",
+          "a": "Yes — both, along with the hamlets and concessions between them. Newcastle's downtown is storefront work like Bowmanville's; Orono and the rural properties around it are more likely to want gutters and exterior washing on the same visit as the glass."
+        }
+      ],
+      "sources": [
+        "https://www.clarington.net/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "cobourg",
+      "name": "Cobourg",
+      "pageType": "town",
+      "parentRegion": "Northumberland County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "town",
+        "heritage",
+        "lakeshore"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "Lakeshore mineral haze on the south side and older brick housing behind it — glass first, then the screens that sit in it.",
+      "cleanIntro": "Interior and exterior glass, screens and tracks, with extra attention to the lake-facing elevations.",
+      "ctaLine": "Tell us about the property and we will come back with a price. Free, and no obligation.",
+      "faqNote": "Local answers. See the <a href=\"../../faq/\">general FAQ</a> for quotes, access and what is included.",
+      "faqs": [
+        {
+          "q": "Does the beach and harbour location affect the glass?",
+          "a": "Yes, on the south side of town. Wind off Lake Ontario carries fine spray inland, and it leaves a mineral haze that rain does not rinse away — most noticeable on west and south elevations in low afternoon light."
+        },
+        {
+          "q": "What about the older homes near the downtown?",
+          "a": "Cobourg's older core has a lot of brick homes with tall narrow sashes and original storms. More panes than the square footage suggests, and screens that are often worth re-meshing rather than replacing."
+        },
+        {
+          "q": "Is Cobourg booked together with Port Hope?",
+          "a": "Usually. They are seven minutes apart and get grouped into the same Northumberland run, so if you are flexible on the day it is easier to fit in — and if a neighbour or a nearby business books at the same time, easier again."
+        },
+        {
+          "q": "Is the beach end worth doing more often?",
+          "a": "Property within a few streets of the beach and harbour usually is. Wind-carried spray leaves a haze that ordinary rain does not shift, and it shows up on the elevations facing the lake long before the sheltered side needs anything."
+        }
+      ],
+      "sources": [
+        "https://www.cobourg.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "courtice",
+      "name": "Courtice",
+      "pageType": "community",
+      "parentRegion": "Durham Region",
+      "parentPage": "clarington",
+      "childPages": [],
+      "context": [
+        "suburban",
+        "home-ground"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Ten minutes from base, so this is where the full list — glass, screens, gutters and a standing schedule — is easiest to put on one visit.",
+      "cleanIntro": "The whole window rather than the pane: glass both sides, screens out and washed, sills and tracks cleared.",
+      "ctaLine": "Ten minutes away, so tell us what you need and we will come back with a price quickly.",
+      "faqNote": "Answers for our nearest neighbours. The <a href=\"../../faq/\">general FAQ</a> covers the rest.",
+      "faqs": [
+        {
+          "q": "How close is Courtice to your base?",
+          "a": "About ten minutes. Courtice is in Clarington, the same municipality as Hampton, so it is as close to home ground as this site gets — which makes scheduling and any follow-up visit straightforward."
+        },
+        {
+          "q": "Is Courtice mostly newer housing?",
+          "a": "Largely, yes — subdivision built from the 1980s onward, with a band of older properties along the original Courtice Road and Highway 2 corridor. The newer builds have fewer, larger windows; the older ones have more of them and more screens."
+        },
+        {
+          "q": "Can several neighbours book together?",
+          "a": "It is worth asking. Several properties on one street is one trip rather than three, and that is reflected in what each is quoted."
+        },
+        {
+          "q": "Is there any advantage to booking with a neighbour?",
+          "a": "On a street like this, yes. Two or three properties in a row is one trip and one set of ladder placements rather than three, and the quotes reflect that. It is worth asking if a neighbour has been thinking about it too — the saving is real and it shortens the wait for a date."
+        }
+      ],
+      "sources": [
+        "https://www.clarington.net/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "durham-region",
+      "name": "Durham Region",
+      "pageType": "region",
+      "parentRegion": "Durham Region",
+      "parentPage": null,
+      "childPages": [
+        "pickering",
+        "ajax",
+        "whitby",
+        "oshawa",
+        "courtice",
+        "bowmanville",
+        "clarington",
+        "hampton"
+      ],
+      "context": [
+        "region",
+        "home-ground"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Home ground, so everything on the list is straightforward to book here — including the exterior work that is harder to fit in further afield.",
+      "cleanIntro": "Interior and exterior glass, screens, sills and light track cleaning, right across the region.",
+      "ctaLine": "Tell us where in Durham and what you want included. Quotes are free and there is no obligation.",
+      "faqNote": "About working across the region. The <a href=\"../../faq/\">general FAQ</a> covers everything else.",
+      "faqs": [
+        {
+          "q": "Which municipalities does this page cover?",
+          "a": "All eight: Pickering, Ajax, Whitby, Oshawa, Clarington, Uxbridge, Scugog and Brock. The busier ones have their own pages with local detail; this page is the regional overview and the route into them."
+        },
+        {
+          "q": "Are you actually based in Durham, or just serving it?",
+          "a": "Based in it. Hampton is a village in Clarington, in the east of the region — so Durham is home ground rather than a market we travel to, and it is the area where scheduling is most flexible."
+        },
+        {
+          "q": "Do you cover the rural north of the region?",
+          "a": "Uxbridge, Scugog and Brock, yes — farmhouses, rural concessions and village properties included. Rural work is worth flagging at the quote stage because a long driveway, a gravel approach or an unlisted road affects the timing more than the window count does."
+        },
+        {
+          "q": "Which parts of Durham are quickest to schedule?",
+          "a": "Clarington, Courtice and Bowmanville, because they are on our doorstep. Oshawa and Whitby are close behind. Pickering and Ajax are straightforward; Uxbridge, Scugog and Brock take a little more planning simply because of the driving between properties."
+        }
+      ],
+      "sources": [
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "georgian-bay-township",
+      "name": "Georgian Bay Township",
+      "pageType": "township",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "township",
+        "bay",
+        "seasonal",
+        "remote"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "residential-window-cleaning"
+      ],
+      "mixNote": "Open-bay exposure and mixed access, so the list is what suits a property reached deliberately rather than casually.",
+      "cleanIntro": "Interior and exterior glass, screens and tracks — with the mineral haze off open bay worked off properly.",
+      "ctaLine": "Tell us how the property is reached and we will give you a straight answer, then a price.",
+      "faqNote": "About bay exposure and access. The <a href=\"../../faq/\">general FAQ</a> covers quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Where exactly is Georgian Bay Township?",
+          "a": "The south-western corner of the District of Muskoka, running from Port Severn and Gloucester Pool up the bay through Honey Harbour and MacTier, with Six Mile Lake inland. It is Muskoka administratively but faces Georgian Bay, which makes it feel like a different place."
+        },
+        {
+          "q": "Is Georgian Bay exposure harder on glass than an inland lake?",
+          "a": "Generally yes. It is open water with a long fetch, so wind-driven spray reaches further inland and leaves a heavier mineral haze than a sheltered lake does — most obvious on west-facing glass."
+        },
+        {
+          "q": "A lot of property here is reached by water. Do you cover that?",
+          "a": "Ask us with the specifics rather than assuming either way. Water access changes how a job is quoted and planned, and a straight answer to your particular property is more use than a general policy on a web page."
+        },
+        {
+          "q": "Do you cover MacTier and the inland side?",
+          "a": "Yes — MacTier, Six Mile Lake and the properties along the Gloucester Pool and Port Severn corridor, which are road-accessible and schedule more easily than the outer bay."
+        }
+      ],
+      "sources": [
+        "https://www.gbtownship.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "gravenhurst",
+      "name": "Gravenhurst",
+      "pageType": "town",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "town",
+        "gateway",
+        "lake"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "cottage-window-cleaning",
+        "commercial-window-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "The first Muskoka town on the route, which makes it the easiest place in the district to combine town glass with a lake property.",
+      "cleanIntro": "Glass inside and out, screens and tracks included — bay-facing and inland both.",
+      "ctaLine": "Tell us about the property and we will come back with a price — free, and no commitment.",
+      "faqNote": "Local answers. See the <a href=\"../../faq/\">general FAQ</a> for quotes, weather and what is included.",
+      "faqs": [
+        {
+          "q": "Is Gravenhurst the easiest part of Muskoka to reach?",
+          "a": "It is the southern gateway to the district, so from Hampton it is the first Muskoka town on the route — which usually makes it the most flexible one to schedule."
+        },
+        {
+          "q": "Does the Wharf area differ from the rest of town?",
+          "a": "The exposure does. Glass around Muskoka Wharf and along Muskoka Bay faces open water and takes spray and pollen the way cottage glass does. A few streets inland it behaves like ordinary town property."
+        },
+        {
+          "q": "Do you cover Sparrow Lake and the outlying areas?",
+          "a": "Yes — Sparrow Lake, Kilworthy and the properties out towards Severn Bridge. Those are seasonal-rhythm properties, so tell us your opening or closing week and we will plan around it."
+        },
+        {
+          "q": "Can a town job and a Sparrow Lake cottage be one booking?",
+          "a": "Usually. Being the southern gateway to the district, Gravenhurst is where combining a town property with a nearby lake one is easiest to schedule. Mention both when you ask and they will be quoted as one trip."
+        }
+      ],
+      "sources": [
+        "https://www.gravenhurst.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "haliburton",
+      "name": "Haliburton County",
+      "pageType": "county",
+      "parentRegion": "Haliburton County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "county",
+        "lake",
+        "seasonal",
+        "edge-of-range"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning"
+      ],
+      "mixNote": "Distance shapes the mix: what is worth doing on a planned trip, rather than what could be added next week.",
+      "cleanIntro": "Glass inside and out, screens washed and dried before they go back, sills and tracks cleared.",
+      "ctaLine": "Tell us the property, the access and your opening or closing week. The quote is free.",
+      "faqNote": "About working this far out. See the <a href=\"../../faq/\">general FAQ</a> for quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Which communities does this page cover?",
+          "a": "Haliburton village, Minden, Carnarvon, Wilberforce, Eagle Lake and the lakes through the county. It borders Kawartha Lakes to the south and Algonquin to the north; the nearest towns on the Muskoka side are Dorset, Lake of Bays and Huntsville."
+        },
+        {
+          "q": "How are visits scheduled this far out?",
+          "a": "As planned trips, grouped with other Haliburton work. This is one of the more distant areas we cover, so a date is agreed rather than picked, and opening or closing weeks are the anchor most people build around."
+        },
+        {
+          "q": "What if nobody will be at the property?",
+          "a": "Tell us at the quote stage rather than assuming. Access without anyone on site has to be arranged in advance, and it is a conversation rather than something we will commit to on a web page."
+        },
+        {
+          "q": "Is it worth doing both spring and fall?",
+          "a": "On a lake property, often. Spring clears the pollen and the winter's worth of grime before the season starts; autumn clears the insect and spider build-up before the place is shut for six months. Whether both are worth it depends on how exposed the glass is."
+        }
+      ],
+      "sources": [
+        "https://www.haliburtoncounty.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether work is carried out with nobody on site, and how access is handled.",
+        "Whether water-access-only properties are accepted, and on what terms."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "hampton",
+      "name": "Hampton",
+      "pageType": "village",
+      "parentRegion": "Durham Region",
+      "parentPage": "clarington",
+      "childPages": [],
+      "context": [
+        "village",
+        "rural",
+        "base"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "The home village. Everything on the list is available and nothing has to be planned around travel.",
+      "cleanIntro": "The full window at home: glass both sides, screens washed and refitted, sills and tracks cleared.",
+      "ctaLine": "You are on our doorstep. Tell us what needs doing and we will come back with a price.",
+      "faqNote": "About working from our own village. The <a href=\"../../faq/\">general FAQ</a> covers quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Is Hampton actually where ClearNorth is based?",
+          "a": "Yes. The business is run from Hampton — the van is parked here, the quotes are written here, and the routes out to everywhere else on this site start here."
+        },
+        {
+          "q": "Does being local mean anything practical?",
+          "a": "Two things. Scheduling is easier, because there is no travel to plan around. And a follow-up — something missed, a screen that needs a second look — is a short drive rather than a rescheduled trip."
+        },
+        {
+          "q": "What sort of properties are in and around the village?",
+          "a": "Older village homes along the Mill Street and Ochonski Road area, newer builds on the edges, and farm properties on the concessions immediately around. The older houses have more windows and more screens than their square footage suggests."
+        },
+        {
+          "q": "What does the village itself look like as a job?",
+          "a": "Mixed, and more work per property than the square footage suggests. The older houses along Mill Street and around the mill pond have small-paned sashes and original storms, while the newer builds on the edges have fewer, larger windows. Farm properties on the concessions around are their own thing again — long approaches, working yards, and outbuildings people often forget to mention."
+        }
+      ],
+      "sources": [
+        "https://www.clarington.net/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "hastings-county",
+      "name": "Hastings County",
+      "pageType": "county",
+      "parentRegion": "Hastings County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "county",
+        "rural",
+        "seasonal",
+        "edge-of-range"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "cottage-window-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Rural and seasonal in equal measure, so the useful services are the ones that suit a property visited rather than passed daily.",
+      "cleanIntro": "Glass inside and out, screens washed and refitted, sills and tracks cleared, wherever the property sits.",
+      "ctaLine": "Tell us where exactly in the county and we will be straight with you about what we can reach.",
+      "faqNote": "About reaching property across the county. See the <a href=\"../../faq/\">general FAQ</a> for the rest.",
+      "faqs": [
+        {
+          "q": "Hastings County is enormous. Which parts do you actually cover?",
+          "a": "The southern half most readily — Belleville, Stirling, Madoc, Tweed and Marmora. Bancroft and the far north are a long way from Hampton, and rather than pretend otherwise: ask, tell us where exactly, and you will get a straight answer about whether we can get there."
+        },
+        {
+          "q": "Do you cover farms and rural properties?",
+          "a": "Yes, and they are much of the county. A farmhouse quote depends more on the approach and the yard than the pane count — a long gravel lane, a working yard or a seasonal road all change how the visit is planned."
+        },
+        {
+          "q": "Are the lakes and cottage properties in the county covered?",
+          "a": "Yes, and they are booked the way cottage work is booked everywhere: around opening and closing dates, with access and whether anyone will be on site settled in advance rather than assumed."
+        },
+        {
+          "q": "What is the single most useful thing to tell you?",
+          "a": "Where exactly. \"Hastings County\" spans Belleville to Bancroft, which is well over an hour of driving, so the nearest town or the road name changes the answer more than anything about the windows does. Give us that and you will get a straight answer about whether we can reach you and when."
+        }
+      ],
+      "sources": [
+        "https://hastingscounty.com/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "huntsville",
+      "name": "Huntsville",
+      "pageType": "town",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "town",
+        "year-round",
+        "lake",
+        "edge-of-range"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "cottage-window-cleaning",
+        "commercial-window-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "A genuine year-round downtown with cottage lakes around it — commercial frontage and seasonal waterfront both feature.",
+      "cleanIntro": "Interior and exterior glass, screens, sills and tracks, for downtown property and the lakes around it.",
+      "ctaLine": "Tell us the property and your dates. Being the far end of the route, earlier is better.",
+      "faqNote": "About the north end of the route. The <a href=\"../../faq/\">general FAQ</a> covers the rest.",
+      "faqs": [
+        {
+          "q": "How far north does Huntsville coverage go?",
+          "a": "The town itself, Fairy Lake and Peninsula Lake, Hidden Valley, Port Sydney and Utterson. Huntsville is the northern end of the regular Muskoka run — beyond it, Algonquin-side properties are a conversation rather than a routine booking."
+        },
+        {
+          "q": "Is there much difference between town and lake property here?",
+          "a": "Yes. Huntsville has a real year-round downtown that books like any town, while Fairy Lake, Peninsula Lake and Hidden Valley run on the seasonal rhythm with lake-facing glass and much heavier pollen and insect film."
+        },
+        {
+          "q": "When should a Huntsville cottage be booked?",
+          "a": "Around your opening or closing week, and as early as you can manage. Being the far end of the route, the date options narrow faster here than further south in the district."
+        },
+        {
+          "q": "Is a fall visit worth it if the place is closing anyway?",
+          "a": "For a lot of properties here, yes. Glass shut up for six months with a summer's worth of insect and spider residue on it is considerably harder work in the spring than glass that was cleared in October. Whether it is worth doing both depends on how exposed the windows are."
+        }
+      ],
+      "sources": [
+        "https://www.huntsville.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "kawartha-lakes",
+      "name": "Kawartha Lakes",
+      "pageType": "city",
+      "parentRegion": "City of Kawartha Lakes",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "lake",
+        "seasonal",
+        "rural"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "Shoreline property drives this list — the glass that faces the water, the screens that catch everything, and the gutters under the trees above them.",
+      "cleanIntro": "Interior and exterior glass, plus the screens and tracks that shoreline property fills fastest.",
+      "ctaLine": "Tell us where on the map and when you open or close up, and we will plan the visit around it.",
+      "faqNote": "About town and lake property here. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Kawartha Lakes covers a huge area. How does that work in practice?",
+          "a": "It is a single municipality the size of a county — Lindsay, Bobcaygeon, Fenelon Falls, Omemee, Coboconk and a great deal of shoreline between them. Work is planned as a route through it rather than property by property, so the more notice you give the better the date options."
+        },
+        {
+          "q": "Is lake property treated differently from town property?",
+          "a": "The timing is. Lindsay and Omemee are year-round towns and book like any other town. Shoreline property runs on an opening-and-closing rhythm, with lake-facing glass, pollen and insect film driving when a clean is actually worth doing."
+        },
+        {
+          "q": "What causes the film on lake-facing windows?",
+          "a": "Three things stacked: spring pollen that bakes on, fine spray off the water leaving mineral haze, and insect and spider activity that is far heavier at a shoreline than a few hundred metres inland. Big south and west-facing glass shows all of it in low light."
+        },
+        {
+          "q": "Can you do a Lindsay house and a lake property together?",
+          "a": "If they are reasonably close and the dates work, yes — and it is worth asking, because two jobs on one trip through the municipality schedule far more easily than two separate ones. Mention both when you request the quote rather than after."
+        }
+      ],
+      "sources": [
+        "https://www.kawarthalakes.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "lake-joseph",
+      "name": "Lake Joseph",
+      "pageType": "lake",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "lake",
+        "seasonal",
+        "waterfront",
+        "remote"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "A long way north, so the list is deliberately the services worth planning a trip around.",
+      "cleanIntro": "Full-height lake glass, sunroom walls and railings, with screens washed and dried before refitting.",
+      "ctaLine": "Tell us how the property is reached before anything else — then we can talk about the glass.",
+      "faqNote": "About access and timing up here. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Where does Lake Joseph coverage run to?",
+          "a": "Port Sandfield at the Rosseau end, up through Foot's Bay and Gordon Bay to Hamer Bay at the north. The lake straddles the Muskoka and Parry Sound district line, so tell us the nearest road access when you ask — it decides which route the visit joins."
+        },
+        {
+          "q": "How do you handle properties reached other than by road?",
+          "a": "By asking first. Water access changes how a job is quoted and planned, and it is not something we will commit to on a web page — get in touch with the details and you will get a straight answer either way."
+        },
+        {
+          "q": "What condition is the glass usually in by spring?",
+          "a": "Pollen-heavy and insect-marked. A winter shut up followed by a late-spring pollen wave is the standard state of a Lake Joseph cottage at opening, and it is why the first visit of the year is usually the longest one."
+        },
+        {
+          "q": "Can several cottages on the same bay book together?",
+          "a": "Worth asking. Getting a crew up here is the fixed cost of the job, so several properties in one bay on one trip is materially easier to schedule than one on its own."
+        }
+      ],
+      "sources": [
+        "https://muskoka.ca/",
+        "https://www.muskokalakes.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "lake-muskoka",
+      "name": "Lake Muskoka",
+      "pageType": "lake",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "lake",
+        "seasonal",
+        "waterfront"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Waterfront glass and everything the lake throws at it, plus the gutters and soffits above it that collect the same debris.",
+      "cleanIntro": "Waterfront glass inside and out, glass railings included, with screens washed and refitted.",
+      "ctaLine": "Tell us the nearest town, the access and your season dates — we will build the visit around them.",
+      "faqNote": "About property on the lake itself. The <a href=\"../../faq/\">general FAQ</a> covers the rest.",
+      "faqs": [
+        {
+          "q": "Why is there a lake page as well as town pages?",
+          "a": "Because cottage owners think in lakes, not municipalities. Lake Muskoka's shoreline is split between Gravenhurst, Bracebridge and Muskoka Lakes Township — if you know which of those you are in, those pages have the municipal detail; if you just know you are on the big lake, this is the page."
+        },
+        {
+          "q": "What is different about glass right on the water?",
+          "a": "It takes the worst of everything. Spray off open water leaves mineral haze that rain will not rinse, spring pollen bakes onto warm south-facing glass, and the low windows nearest the water get both plus whatever the wind brings off it. It is also the glass you look through most."
+        },
+        {
+          "q": "Which stretches of shoreline does this cover?",
+          "a": "The whole lake — Beaumaris and Milford Bay, the Gravenhurst and Bracebridge arms, the Bala Bay end, and the islands' shore-side glass. Which municipality that falls in matters for the route, so tell us the nearest town when you ask."
+        },
+        {
+          "q": "Can it be timed to opening or closing?",
+          "a": "That is how most of it is booked. Give us the week you are opening or closing and the visit is planned around it — earlier notice means a better chance of the exact date rather than the week."
+        }
+      ],
+      "sources": [
+        "https://muskoka.ca/",
+        "https://www.muskokalakes.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "lake-of-bays",
+      "name": "Lake of Bays",
+      "pageType": "township",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "township",
+        "lake",
+        "seasonal",
+        "edge-of-range"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Deep forest and a sheltered lake mean a heavy pollen and insect load, which is why screens and exterior washing matter as much as the glass.",
+      "cleanIntro": "Glass both sides, plus the screens that a sheltered, heavily wooded lake fills faster than open water does.",
+      "ctaLine": "Tell us where on the lake and when you open or close, and we will fit the visit to it.",
+      "faqNote": "About the lake and its communities. See the <a href=\"../../faq/\">general FAQ</a> for quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "Which communities are in Lake of Bays?",
+          "a": "Baysville, Dwight, Dorset, Bigwin Island and Norway Point, around the lake of the same name. Dorset sits on the boundary with Haliburton County, which is why those two pages link to each other."
+        },
+        {
+          "q": "How is it reached from your side?",
+          "a": "Through Bracebridge or Huntsville, so it joins the northern Muskoka route rather than being its own trip. Notice matters — it is one of the further corners of the district from Hampton."
+        },
+        {
+          "q": "What is the glass usually like at opening?",
+          "a": "Heavily marked. A deep, sheltered lake surrounded by mixed forest means a serious pollen load in late spring and a lot of insect and spider activity by autumn, and six months shut adds the rest."
+        },
+        {
+          "q": "Is a spring and autumn pair worth it here?",
+          "a": "For a property with a lot of lake-facing glass, usually. Spring clears the winter and the pollen before the season; autumn clears the insect build-up before the place is closed up."
+        }
+      ],
+      "sources": [
+        "https://www.lakeofbays.on.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "lake-rosseau",
+      "name": "Lake Rosseau",
+      "pageType": "lake",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [],
+      "context": [
+        "lake",
+        "seasonal",
+        "waterfront"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Big lake elevations, Muskoka rooms and glass railings — more glass per property than almost anywhere else on this site.",
+      "cleanIntro": "Big lake elevations, Muskoka rooms and glass railings — plus screens, sills and tracks.",
+      "ctaLine": "Tell us where on the lake and when you are opening or closing. Quote free, no commitment.",
+      "faqNote": "About the lake and its shoreline. See the <a href=\"../../faq/\">general FAQ</a> for quotes and inclusions.",
+      "faqs": [
+        {
+          "q": "How is this different from the Rosseau page?",
+          "a": "Rosseau is a village at the north end of the lake, and it is not even in Muskoka — it sits in Seguin Township, Parry Sound District. This page is the lake itself: Windermere, Minett, the Port Carling end and the shoreline between. If you mean the village, that page is the one."
+        },
+        {
+          "q": "What is the glass like on Lake Rosseau properties?",
+          "a": "Generally a lot of it, and generally pointed at the water. Big lake elevations, walkouts, Muskoka rooms and glass railings are the pattern here more than small-paned cottage windows — which changes the shape of a quote considerably."
+        },
+        {
+          "q": "Do you clean glass railings and sunroom walls?",
+          "a": "Yes. Railing glass and Muskoka-room glazing are cleaned as part of the same visit, and on this lake they are often more of the job than the windows are."
+        },
+        {
+          "q": "When is the best time to book?",
+          "a": "Either side of the season. Before opening, so the first weekend is not spent looking through a winter's worth of film; or after closing, so the place is shut with the glass clear. Pollen weeks in late spring are worth avoiding — a clean during them does not last."
+        }
+      ],
+      "sources": [
+        "https://muskoka.ca/",
+        "https://www.muskokalakes.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "markham",
+      "name": "Markham",
+      "pageType": "city",
+      "parentRegion": "York Region",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "suburban",
+        "newer-stock"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "post-construction-window-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Newer builds, tall feature windows and a steady run of renovations — which is why post-construction sits alongside the ordinary residential work here.",
+      "cleanIntro": "Interior and exterior glass, including the tall stairwell and feature windows that a two-storey build puts over the front door.",
+      "ctaLine": "Tell us the storeys and the window count and we will come back with a price — free, and no commitment.",
+      "faqNote": "Local answers. The <a href=\"../../faq/\">general FAQ</a> covers pricing, access, weather and inclusions.",
+      "faqs": [
+        {
+          "q": "How does newer subdivision glass differ from older housing?",
+          "a": "Newer Markham builds tend towards fewer, larger panes and more two-storey feature windows over an entrance or stairwell. Fewer windows does not mean quicker — the tall ones need proper ladder placement, and the quote form asks about storeys precisely because of them."
+        },
+        {
+          "q": "We just finished a renovation. Is that a different job?",
+          "a": "Yes. Paint flecks, stucco spatter, adhesive and drywall dust do not come off the way weather does, and some of it cannot be removed safely at all. That is post-construction window cleaning, and it is worth reading what we will and will not scrape before booking."
+        },
+        {
+          "q": "Is Markham covered separately from York Region?",
+          "a": "Markham has its own page because it is searched for by name and is a city in its own right. The York Region page covers the municipalities around it — Vaughan, Richmond Hill, Newmarket, Aurora, King and Georgina — and links back here."
+        },
+        {
+          "q": "Are the older Unionville properties different?",
+          "a": "Yes, and worth flagging. Unionville's heritage core has divided-light sashes and original storms — many small panes, cleaned individually — which is a different job from the newer subdivisions elsewhere in the city. Say which you have when you ask."
+        }
+      ],
+      "sources": [
+        "https://www.markham.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "mississauga",
+      "name": "Mississauga",
+      "pageType": "city",
+      "parentRegion": "Greater Toronto Area",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "urban",
+        "condo"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "maintenance-plans",
+        "screen-track-cleaning"
+      ],
+      "mixNote": "This far west a visit has to earn the trip, so the mix leans towards work that is worth planning: a full residential or commercial clean, and a schedule that brings us back.",
+      "cleanIntro": "Everything at the window: glass inside and out, screens washed and refitted, sills and tracks cleared.",
+      "ctaLine": "Tell us about the property and we will come back with a price, and be straight with you about scheduling.",
+      "faqNote": "About working this far west. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Mississauga is a long way from Hampton. Are you really covering it?",
+          "a": "It is the western edge of what we cover, and we would rather be straight about that than pretend otherwise. Mississauga work is planned into a route rather than booked for next Tuesday, so it needs notice, and a job large enough to justify the trip is easier to schedule than a single small one."
+        },
+        {
+          "q": "Do you take on condo and townhouse blocks?",
+          "a": "Individual units and accessible balcony glass, yes. Whole-building exterior work above the third storey is not something we do — it needs equipment and certification we are not going to claim to have."
+        },
+        {
+          "q": "What suits a Mississauga property best — one-off or a schedule?",
+          "a": "If the glass faces a busy arterial or the QEW corridor it will show film within a season, and a repeating schedule usually costs less per visit than calling when it gets bad. Sheltered glass on a quiet street is fine as a one-off."
+        },
+        {
+          "q": "What makes a Mississauga job easier to schedule?",
+          "a": "Size and flexibility. A property with enough work to justify the drive, or a date range rather than a single day, both make a real difference this far west. A small single-visit job on a fixed date is the hardest thing to fit in, and we would rather say so than keep you waiting."
+        }
+      ],
+      "sources": [
+        "https://www.mississauga.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "What happens above three storeys — the quote form stops there."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "muskoka",
+      "name": "Muskoka",
+      "pageType": "district",
+      "parentRegion": "District of Muskoka",
+      "parentPage": null,
+      "childPages": [
+        "bracebridge",
+        "gravenhurst",
+        "huntsville",
+        "muskoka-lakes",
+        "lake-of-bays",
+        "georgian-bay-township",
+        "port-carling",
+        "bala",
+        "lake-muskoka",
+        "lake-rosseau",
+        "lake-joseph"
+      ],
+      "context": [
+        "district",
+        "lake",
+        "seasonal"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning"
+      ],
+      "mixNote": "Cottage work leads here, with the exterior services that make one trip up worth more than the glass alone.",
+      "cleanIntro": "Lake-facing glass, Muskoka rooms and sunrooms, plus the screens and tracks that come with them.",
+      "ctaLine": "Tell us the property, how it is reached and when you open or close. The quote is free either way.",
+      "faqNote": "District-level answers. The <a href=\"../../faq/\">general FAQ</a> covers quotes, access, weather and inclusions.",
+      "faqs": [
+        {
+          "q": "Should I use this page or the one for my town or lake?",
+          "a": "This is the regional overview. If you know your municipality — Bracebridge, Gravenhurst, Huntsville, Muskoka Lakes, Lake of Bays or Georgian Bay — that page has the local detail. If you think of your place by the water it sits on, the Lake Muskoka, Lake Rosseau and Lake Joseph pages are organised that way instead."
+        },
+        {
+          "q": "What actually makes Muskoka glass dirty?",
+          "a": "A short list, but a punishing one. Pine and birch pollen in a heavy wave in late spring, fine spray off open water leaving mineral haze, and insect and spider activity that is heavier at a shoreline than anywhere inland. Big lake-facing glass in low morning and evening light shows all three."
+        },
+        {
+          "q": "How far in advance should Muskoka work be booked?",
+          "a": "As far as you reasonably can, particularly around opening and closing weeks when everyone wants the same fortnight. Muskoka is a planned trip from Hampton rather than a same-day call-out, and the tighter the date, the fewer the options."
+        },
+        {
+          "q": "Is anything about access worth telling you up front?",
+          "a": "Yes — how the property is reached, and whether anyone will be there. A gated private lane, a seasonal road, or a place reached other than by car all change how a visit is planned, and we would rather discuss it at the quote than discover it on the day."
+        }
+      ],
+      "sources": [
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "muskoka-lakes",
+      "name": "Muskoka Lakes",
+      "pageType": "township",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka",
+      "childPages": [
+        "port-carling",
+        "bala"
+      ],
+      "context": [
+        "township",
+        "lake",
+        "seasonal"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "The most cottage-heavy municipality we cover, so the mix is built entirely around the seasonal visit.",
+      "cleanIntro": "Lake-facing glass, Muskoka rooms and railing glass, with the screens and tracks that go with them.",
+      "ctaLine": "Tell us the property, the access and your opening or closing week. Quotes are free.",
+      "faqNote": "About the township and its shoreline. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "What is the difference between this page and the lake pages?",
+          "a": "This is the municipality — the Township of Muskoka Lakes, which contains Port Carling, Bala, Windermere, Minett and Beaumaris, and holds most of the shoreline of all three big lakes. The Lake Muskoka, Lake Rosseau and Lake Joseph pages cut the same area by water instead. Use whichever matches how you think about your place."
+        },
+        {
+          "q": "Is this the most cottage-heavy area you cover?",
+          "a": "By some distance. The township's population multiplies in summer, which shapes everything about how work here is planned — opening and closing weeks are the pinch points, and they are the same fortnight for everyone."
+        },
+        {
+          "q": "What should I mention about access when I ask?",
+          "a": "How the property is reached and whether anyone will be there. Private lanes, seasonal roads, gates and anything other than road access all change how a visit is planned, and none of them are a problem if we know in advance."
+        },
+        {
+          "q": "Are glass railings and Muskoka rooms included?",
+          "a": "Yes — railing glass and Muskoka-room glazing are cleaned in the same visit. On township waterfront they are frequently more of the job than the windows."
+        }
+      ],
+      "sources": [
+        "https://www.muskokalakes.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "oshawa",
+      "name": "Oshawa",
+      "pageType": "city",
+      "parentRegion": "Durham Region",
+      "parentPage": "durham-region",
+      "childPages": [],
+      "context": [
+        "urban",
+        "older-stock",
+        "storefront"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "The one place east of Toronto where commercial frontage is as much of the work as houses, and close enough to keep a recurring schedule reliably.",
+      "cleanIntro": "Glass inside and out, screens, sills and tracks — for houses, storefronts and the offices between them.",
+      "ctaLine": "Tell us about the property or the frontage and we will come back with a price. No commitment.",
+      "faqNote": "Local answers, homes and commercial. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Do you do commercial work in Oshawa as well as homes?",
+          "a": "Yes — storefronts, offices, clinics and ground-floor units, one-off or on a repeating schedule. Oshawa is close enough to Hampton that a recurring commercial schedule is straightforward to keep to, which is not true everywhere on this site."
+        },
+        {
+          "q": "What is different about the older neighbourhoods?",
+          "a": "Central Oshawa has a lot of pre-war and mid-century housing — wood sashes, storm windows, small panes and original tracks. More windows, smaller each, and screens that are often worth re-meshing rather than replacing."
+        },
+        {
+          "q": "Is north Oshawa treated differently from downtown?",
+          "a": "Practically, yes. Taunton, Windfields and the newer north-end subdivisions are two-storey builds with tall feature windows; downtown and Lakeview are older stock with more panes. Both are quoted the same way, but the numbers land differently."
+        },
+        {
+          "q": "How often does a storefront here need doing?",
+          "a": "More often than a house, and the honest answer is that it depends on the street. Frontage on a busy route picks up road film within weeks; a unit set back in a plaza holds up much longer. Start with one clean, look at it a month later, and set the interval from what you see."
+        }
+      ],
+      "sources": [
+        "https://www.oshawa.ca/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "parry-sound",
+      "name": "Parry Sound",
+      "pageType": "town and district",
+      "parentRegion": "Parry Sound District",
+      "parentPage": null,
+      "childPages": [
+        "rosseau"
+      ],
+      "context": [
+        "town",
+        "district",
+        "bay",
+        "seasonal",
+        "remote"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Exposed granite shoreline and long distances, so this is the work worth building a trip around.",
+      "cleanIntro": "Interior and exterior glass, screens and tracks — with the bay-driven haze taken off rather than moved around.",
+      "ctaLine": "Tell us the property and the access — road, lane or water — and you will get a straight answer.",
+      "faqNote": "About the town and the district. The <a href=\"../../faq/\">general FAQ</a> covers quotes, access and inclusions.",
+      "faqs": [
+        {
+          "q": "Is this the town of Parry Sound or the whole district?",
+          "a": "The town leads, because that is what people search for, but the page covers the surrounding district too — Whitestone, Pointe au Baril and the Georgian Bay shoreline north of the town. Rosseau, at the district's southern edge, has its own page."
+        },
+        {
+          "q": "What is different about Georgian Bay property?",
+          "a": "Rock, wind and open water. Properties here sit on exposed granite with a long fetch of open bay in front of them, so wind-driven spray reaches glass that would be sheltered on an inland lake, and the mineral haze it leaves is heavier."
+        },
+        {
+          "q": "How do you handle the 30,000 Islands?",
+          "a": "By asking first. A great deal of property here is reached other than by road, and that changes how a job is quoted and planned — tell us about your particular property and you will get a straight answer rather than a general policy."
+        },
+        {
+          "q": "Is Parry Sound near Haliburton?",
+          "a": "No, and it is a common mix-up. Muskoka sits between the two — they are both cottage country, but they are not neighbours and are reached by completely different routes."
+        }
+      ],
+      "sources": [
+        "https://www.parrysound.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms.",
+        "Whether work is carried out with nobody on site, and how access is handled."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "peterborough",
+      "name": "Peterborough",
+      "pageType": "city",
+      "parentRegion": "Peterborough County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "city",
+        "older-stock",
+        "lake-adjacent"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "cottage-window-cleaning"
+      ],
+      "mixNote": "A city with lake country attached, so the list covers both town glass and the cottage rhythm on the same run.",
+      "cleanIntro": "The whole window: glass both sides, screens out and washed, sills and tracks cleared.",
+      "ctaLine": "Tell us about the property — town or lake — and we will come back with a free price.",
+      "faqNote": "City and county answers. The <a href=\"../../faq/\">general FAQ</a> covers quotes, access and inclusions.",
+      "faqs": [
+        {
+          "q": "Is this the city only, or the surrounding county too?",
+          "a": "Both. The city, plus Lakefield, Bridgenorth, Ennismore and the properties around Chemong, Buckhorn and Stony Lake — town work and lake work booked on the same run where the timing allows."
+        },
+        {
+          "q": "What is different about the older city neighbourhoods?",
+          "a": "The Old West End and East City have a lot of pre-war housing: tall narrow sashes, original storms and small-paned uppers. It reads as a modest window count from the street and is a much bigger job in practice, which is why the quote form asks for an approximate number rather than a guess at size."
+        },
+        {
+          "q": "Can a town property and a lake property be done in one booking?",
+          "a": "Often, if they are reasonably close and the dates line up. It is worth mentioning both when you ask, because two jobs on one trip are easier to schedule and are priced accordingly."
+        },
+        {
+          "q": "Do you cover the county lakes as well as the city?",
+          "a": "Yes — Chemong, Buckhorn, Stony Lake and the properties around them, along with Lakefield, Bridgenorth and Ennismore. Lake property runs on the seasonal rhythm even this close to a city, so opening and closing dates are the useful thing to give us."
+        }
+      ],
+      "sources": [
+        "https://www.peterborough.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "pickering",
+      "name": "Pickering",
+      "pageType": "city",
+      "parentRegion": "Durham Region",
+      "parentPage": "durham-region",
+      "childPages": [],
+      "context": [
+        "suburban",
+        "lakeshore",
+        "rural-fringe"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Lakeshore haze on one side and subdivision pollen on the other, so screens and a repeating schedule earn their place alongside the glass.",
+      "cleanIntro": "Glass inside and out, plus the screens that carry lake haze on the south side and pollen on the north.",
+      "ctaLine": "Tell us about the property and we will come back with a price. Free, and no commitment.",
+      "faqNote": "Local answers. Quotes, weather and what a visit includes are on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Does the lake make a difference to Pickering windows?",
+          "a": "On the south side, yes. Glass within sight of Lake Ontario picks up a fine mineral haze from wind-carried spray that ordinary rain does not rinse off, and it shows in low afternoon light. Further north in Amberlea or Rougemount it is road film and pollen instead."
+        },
+        {
+          "q": "Do you go out to Brougham, Whitevale and the rural north?",
+          "a": "Yes. Rural Pickering and the hamlets north of Highway 7 are covered. Mention a long or gravel driveway when you ask for the quote — access shapes the timing more than the pane count."
+        },
+        {
+          "q": "How much notice do you need in Pickering?",
+          "a": "Less than most places on this site. Pickering is a short run from Hampton, so it schedules more easily than anywhere west of Toronto."
+        },
+        {
+          "q": "Which services get asked for most here?",
+          "a": "Glass and screens together, and gutters in the autumn. Pickering has enough mature tree cover in the older neighbourhoods that eavestroughs fill properly by November, and doing them on the same visit as the windows costs less than two separate trips."
+        }
+      ],
+      "sources": [
+        "https://www.pickering.ca/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "port-carling",
+      "name": "Port Carling",
+      "pageType": "village",
+      "parentRegion": "District of Muskoka",
+      "parentPage": "muskoka-lakes",
+      "childPages": [],
+      "context": [
+        "village",
+        "lake",
+        "seasonal",
+        "storefront"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning",
+        "commercial-window-cleaning"
+      ],
+      "mixNote": "Cottage work either side of the locks, plus a short, intense commercial season along the waterfront.",
+      "cleanIntro": "Cottage glass either side of the locks, railings and Muskoka rooms included, screens washed and refitted.",
+      "ctaLine": "Tell us which side of the locks and when you open or close. The quote is free.",
+      "faqNote": "About the village and both lakes. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Why does a village this size have its own page?",
+          "a": "Because of where it sits. Port Carling is the lock between Lake Muskoka and Lake Rosseau, which makes it the practical centre of the whole Muskoka Lakes area — people search for it by name whether their cottage is north or south of the locks."
+        },
+        {
+          "q": "Do you cover the shoreline either side of the locks?",
+          "a": "Yes — the Indian River through the village, out towards Beaumaris and Milford Bay on the Lake Muskoka side, and up to Minett and Windermere on the Rosseau side. Which side you are on shapes the route, so mention it."
+        },
+        {
+          "q": "Is the village commercial strip covered too?",
+          "a": "Yes. The shops and businesses along the waterfront are storefront work like anywhere else, with the difference that the season is short and intense — worth thinking about when the frontage matters most."
+        },
+        {
+          "q": "What is the busiest time to try to book?",
+          "a": "Opening and closing weeks, by a wide margin, because everyone on both lakes wants the same fortnight. Anything you can do to book early or be flexible on the day helps."
+        },
+        {
+          "q": "How early should a Port Carling visit be booked?",
+          "a": "Earlier than you think. Opening and closing weeks are the same fortnight for cottage owners on both Lake Muskoka and Lake Rosseau, and Port Carling sits between them — so it is the busiest point on the map at exactly the times everyone wants."
+        }
+      ],
+      "sources": [
+        "https://www.muskokalakes.ca/",
+        "https://muskoka.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "port-hope",
+      "name": "Port Hope",
+      "pageType": "town",
+      "parentRegion": "Northumberland County",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "town",
+        "heritage",
+        "storefront"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "Heritage glass and a preserved shopfront street, so the emphasis is on careful pane-by-pane work rather than volume.",
+      "cleanIntro": "Glass inside and out, pane by pane — which on a heritage sash means considerably more panes than it looks.",
+      "ctaLine": "Tell us about the property — including the sash type if you know it — and we will price it.",
+      "faqNote": "About heritage property here. Quotes, access and weather are on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Are heritage windows a problem?",
+          "a": "Not a problem, but they are the reason a Port Hope quote can look different from a suburban one. The town has one of the best-preserved 19th-century streetscapes in Ontario, which for us means divided-light sashes, wavy original glass and exterior storms — many small panes, each cleaned individually, and old glass handled gently."
+        },
+        {
+          "q": "Do you clean the Walton Street shopfronts?",
+          "a": "Yes, including the transom and upper-storey glass above the display windows, which is the part that gets skipped. A repeating schedule is worth asking about for a downtown frontage."
+        },
+        {
+          "q": "How is Port Hope scheduled from Hampton?",
+          "a": "It is east along the 401 and gets grouped with Cobourg and the Northumberland run rather than booked as a one-off. Give us some notice and some flexibility on the exact day."
+        },
+        {
+          "q": "Can original and storm windows be done together?",
+          "a": "Yes, and on a heritage property it is the only way it makes sense. The storms come off, both faces and the primary sash get cleaned, and everything goes back. It takes longer than a modern window, which is why it is worth mentioning when you ask rather than discovering at the quote."
+        }
+      ],
+      "sources": [
+        "https://www.porthope.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "rosseau",
+      "name": "Rosseau",
+      "pageType": "village",
+      "parentRegion": "Parry Sound District",
+      "parentPage": "parry-sound",
+      "childPages": [],
+      "context": [
+        "village",
+        "lake",
+        "seasonal",
+        "rural"
+      ],
+      "serviceMix": [
+        "cottage-window-cleaning",
+        "residential-window-cleaning",
+        "exterior-cleaning",
+        "screen-track-cleaning"
+      ],
+      "mixNote": "Village property and lake property in the same visit, with the exterior work that a wooded, rural setting makes worthwhile.",
+      "cleanIntro": "Glass both sides for village and lake property, with screens washed and dried before they go back.",
+      "ctaLine": "Tell us whether it is the village or the lake, and when you open or close up.",
+      "faqNote": "About the village and which page to use. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Is Rosseau in Muskoka?",
+          "a": "No — and this trips people up constantly. The village sits at the north end of Lake Rosseau, but it is in Seguin Township, Parry Sound District. The lake is shared; the municipality is not."
+        },
+        {
+          "q": "So should I use this page or the Lake Rosseau page?",
+          "a": "If you are in or around the village and the hamlets behind it, this one. If your cottage is on the lake itself — Windermere, Minett, the Port Carling end — the Lake Rosseau page covers the shoreline and the properties on it."
+        },
+        {
+          "q": "Which surrounding hamlets are covered?",
+          "a": "Ashdown Corners, Bent River, Humphrey, Ullswater and Hekkla — the scattered settlements through Seguin Township behind the village. Most are down township or private roads, so mention the approach when you ask."
+        },
+        {
+          "q": "How does Rosseau fit into your routes?",
+          "a": "It is the closest served community to Parry Sound itself, and it joins the northern cottage-country run rather than the Muskoka Lakes one. Notice and some flexibility on the day both help."
+        }
+      ],
+      "sources": [
+        "https://www.seguin.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether water-access-only properties are accepted, and on what terms."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "scarborough",
+      "name": "Scarborough",
+      "pageType": "city district",
+      "parentRegion": "Greater Toronto Area",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "suburban",
+        "older-stock"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "commercial-window-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Older housing stock means the screens and tracks are usually doing more damage to the view than the glass is, so they lead the list here.",
+      "cleanIntro": "Glass, screens, sills and tracks — and on this housing stock the screens and tracks are usually the half that transforms the view.",
+      "ctaLine": "Tell us roughly how many windows and screens and we will come back with a price. No obligation.",
+      "faqNote": "Specific to the housing here. Quotes, access and what a visit includes are on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "What kind of housing are you usually working on here?",
+          "a": "Post-war bungalows, backsplits and sidesplits, plus townhouse rows and low-rise. That housing stock has a lot of small panes and original aluminium sliders, which is slower per window than a modern build with six large ones — worth knowing when you compare a quote."
+        },
+        {
+          "q": "Are the older aluminium windows and screens a problem?",
+          "a": "Not a problem, but they take longer. Older sliders have tracks that fill with grit and screens that pop out of shape, so screen washing and light track cleaning are usually the more valuable half of the visit. Screens that have torn can be re-meshed rather than replaced."
+        },
+        {
+          "q": "Do you do the plaza storefronts as well as houses?",
+          "a": "Yes — ground-floor commercial units and plaza frontage, one-off or on a repeating schedule. Say which hours suit when you ask, and we will tell you what is workable rather than agreeing in principle."
+        },
+        {
+          "q": "Is it worth cleaning basement and window-well glass?",
+          "a": "On this housing stock, often. Post-war Scarborough houses have basement windows set into wells that fill with leaves and grit, and the glass behind them is usually the dirtiest in the house. The quote form asks whether to include them, and it is a fair question to say yes to."
+        }
+      ],
+      "sources": [
+        "https://www.toronto.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether commercial work can be scheduled outside normal trading hours."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "toronto",
+      "name": "Toronto",
+      "pageType": "city",
+      "parentRegion": "Greater Toronto Area",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "urban",
+        "condo",
+        "storefront"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "post-construction-window-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "City glass is about film and frequency more than dirt, so the useful pairing here is a thorough first clean and a schedule that stops it building — with post-construction work for the reno and fit-out that never stops in this city.",
+      "cleanIntro": "City glass, inside and out — plus the screens and tracks that hold a winter's worth of road salt and grit.",
+      "ctaLine": "Tell us about the property, the access and the hours that suit — the price comes back with no obligation attached.",
+      "faqNote": "Answers about working in the city specifically. The <a href=\"../../faq/\">general FAQ</a> covers quotes, access, weather and what is included.",
+      "faqs": [
+        {
+          "q": "Is Toronto a regular route or a special trip?",
+          "a": "It is a planned run rather than a same-day call-out — Hampton is east of Durham, so Toronto work is booked in advance and grouped where we can. Practically that means give us more notice than a Bowmanville customer would need, and be flexible by a day or two if you can."
+        },
+        {
+          "q": "Can you do a condo unit, or only houses?",
+          "a": "In-suite glass and balcony glass on floors that can be reached from the balcony itself, yes. Anything requiring access from outside the building — a swing stage, a lift or rope access — is not something we take on, and we will say so rather than book it and cancel."
+        },
+        {
+          "q": "What do you need to know about parking and access downtown?",
+          "a": "Tell us at the quote stage: permit-only streets, a laneway that will not take a van, a building that requires booking a loading bay, or a concierge who has to be told in advance. None of it is a problem once we know; all of it is a problem on the morning."
+        },
+        {
+          "q": "Does construction dust from a nearby site change anything?",
+          "a": "It changes how long it takes and how quickly it comes back. Fresh construction grit is abrasive, so it is floated off wet rather than wiped. If a site next door is still active, a clean will not hold for long — worth timing around, and worth asking about post-construction cleaning instead."
+        }
+      ],
+      "sources": [
+        "https://www.toronto.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked.",
+        "Whether commercial work can be scheduled outside normal trading hours.",
+        "What happens above three storeys — the quote form stops there."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "trenton",
+      "name": "Trenton",
+      "pageType": "city",
+      "parentRegion": "Quinte West",
+      "parentPage": null,
+      "childPages": [],
+      "context": [
+        "city",
+        "riverfront",
+        "edge-of-range"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "screen-track-cleaning",
+        "exterior-cleaning"
+      ],
+      "mixNote": "River exposure and a working downtown, so damp-season film on shaded elevations and storefront frontage both feature.",
+      "cleanIntro": "Interior and exterior glass, screens, sills and tracks — riverfront and inland alike.",
+      "ctaLine": "Tell us about the property and we will come back with a price. No obligation attached.",
+      "faqNote": "About Trenton and Quinte West. Everything else is on the <a href=\"../../faq/\">general FAQ</a>.",
+      "faqs": [
+        {
+          "q": "Is this page Trenton or all of Quinte West?",
+          "a": "Both — Trenton is the largest community in the City of Quinte West, and the page covers the surrounding area including Frankford and the rural parts of the municipality. Trenton is what people search for, which is why it leads."
+        },
+        {
+          "q": "Does the Trent River waterfront make a difference?",
+          "a": "Riverfront glass sees more insect activity and more damp-season algae film on shaded elevations than inland property does. It is not dramatic, but on a north or east face it is the difference between a clean lasting a season and lasting half of one."
+        },
+        {
+          "q": "How far east do you go?",
+          "a": "Quinte West is the eastern edge of the regular route. Beyond it, Hastings County properties are covered on their own page, and both are planned trips rather than same-day work."
+        },
+        {
+          "q": "Do you cover Frankford and the rural parts of the municipality?",
+          "a": "Yes. Quinte West is a large municipality and the page covers it, not just the Trenton core. As anywhere rural, the approach matters — a long gravel lane or an unlisted road affects the visit more than the window count does."
+        }
+      ],
+      "sources": [
+        "https://www.quintewest.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "whitby",
+      "name": "Whitby",
+      "pageType": "town",
+      "parentRegion": "Durham Region",
+      "parentPage": "durham-region",
+      "childPages": [],
+      "context": [
+        "suburban",
+        "heritage",
+        "lakeshore"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "screen-track-cleaning",
+        "commercial-window-cleaning",
+        "maintenance-plans"
+      ],
+      "mixNote": "Two towns in one, so the list spans heritage sash work downtown and storefront frontage in both cores.",
+      "cleanIntro": "Everything at the window, from Brooklin's newer builds to the divided-light sashes downtown.",
+      "ctaLine": "Tell us which end of town and what needs doing. The quote is free and carries no obligation.",
+      "faqNote": "About Whitby and Brooklin. See the <a href=\"../../faq/\">general FAQ</a> for quotes, access and inclusions.",
+      "faqs": [
+        {
+          "q": "Is Brooklin covered by this page?",
+          "a": "Yes. Brooklin is part of Whitby, north of the 407, and it is a genuinely different property mix — village core, older brick homes and newer estate subdivisions rather than the lakeshore grid. Say which end of town you are in when you ask, because it changes the route."
+        },
+        {
+          "q": "Do the heritage homes near downtown need anything special?",
+          "a": "Time, mostly. Divided-light sashes and original storm windows mean many small panes rather than a few large ones, and each is cleaned individually. It is worth mentioning at the quote stage rather than being a surprise on the invoice."
+        },
+        {
+          "q": "Do you cover Port Whitby and the marina area?",
+          "a": "Yes. Glass down by the harbour takes wind-driven spray off the lake, which leaves a haze that rain does not shift — the same story as the Ajax and Pickering shoreline."
+        },
+        {
+          "q": "Should the whole house be done, or just the front?",
+          "a": "Whichever you actually look at. Plenty of Whitby customers do the full house once a year and the front elevation again mid-season, because that is the glass facing the street and the afternoon sun. Ask for it that way and it will be quoted that way."
+        }
+      ],
+      "sources": [
+        "https://www.whitby.ca/",
+        "https://www.durham.ca/"
+      ],
+      "needsConfirmation": [],
+      "indexation": "indexable"
+    },
+    {
+      "slug": "york-region",
+      "name": "York Region",
+      "pageType": "region",
+      "parentRegion": "Greater Toronto Area",
+      "parentPage": null,
+      "childPages": [
+        "markham"
+      ],
+      "context": [
+        "suburban",
+        "region"
+      ],
+      "serviceMix": [
+        "residential-window-cleaning",
+        "commercial-window-cleaning",
+        "maintenance-plans",
+        "exterior-cleaning"
+      ],
+      "mixNote": "Spread out enough that several properties on one trip is the sensible unit, which is why recurring schedules and exterior work feature as strongly as the glass.",
+      "cleanIntro": "Glass, screens, sills and tracks across the region — houses, storefronts and everything between.",
+      "ctaLine": "Tell us where in the region and what needs doing — the quote is free and carries no commitment.",
+      "faqNote": "Region-specific answers. See the <a href=\"../../faq/\">general FAQ</a> for quotes, access and what is included.",
+      "faqs": [
+        {
+          "q": "Which communities does the York Region page actually cover?",
+          "a": "Vaughan, Richmond Hill, Newmarket, Aurora, King, Whitchurch-Stouffville, East Gwillimbury and Georgina. Markham is also in York Region but has its own page, because it is large enough and searched for often enough to deserve one."
+        },
+        {
+          "q": "Is one quote possible for several properties across the region?",
+          "a": "Yes, and it is usually the sensible way to do it. Several properties in the same corner of the region are one trip; the same number scattered from Georgina to Vaughan is not, and the quote will reflect that."
+        },
+        {
+          "q": "How far north do you go?",
+          "a": "Georgina and the Lake Simcoe shoreline are the northern edge from this direction. Further north again is Muskoka and Kawartha country, which we reach on a different route entirely — see the cottage-country pages for how those trips are planned."
+        },
+        {
+          "q": "How do you handle a property with a lot of glass?",
+          "a": "By asking about it before quoting. Estate properties across Vaughan, King and Aurora often have two-storey window walls, sunroom glazing and glass railings, which are a different job from a standard subdivision house. Tell us what you have and the quote will reflect it accurately."
+        }
+      ],
+      "sources": [
+        "https://www.york.ca/"
+      ],
+      "needsConfirmation": [
+        "Travel and route rules for this area — how far ahead a visit must be booked."
+      ],
+      "indexation": "indexable"
+    }
+  ]
+}
