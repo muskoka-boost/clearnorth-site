@@ -59,6 +59,7 @@ jobs:
             --exclude 'data' \
             --exclude 'node_modules' \
             --exclude 'site.config.json' \
+            --exclude '_config.yml' \
             --exclude '*.md' \
             ./ _site/
           # Stop Pages running the files through Jekyll.

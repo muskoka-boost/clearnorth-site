@@ -1,0 +1,32 @@
+# Jekyll config — only read when GitHub Pages is set to "Deploy from a branch".
+#
+# It should not be. The repo's Pages source belongs on "GitHub Actions", so that
+# .github/workflows/deploy-pages.yml runs apply-site-config.mjs --env=github-pages
+# first and the preview serves canonicals, Open Graph URLs, robots.txt and a
+# sitemap that belong to the Pages origin rather than to the client-preview host.
+# Settings -> Pages -> Build and deployment -> Source.
+#
+# Until that is switched, GitHub builds this repo with Jekyll and publishes it
+# verbatim, which would put the build tooling, the location data file, the site
+# config and the internal documentation on a public URL. This keeps them off it.
+#
+# Under the Actions source none of this is read: the workflow does not invoke
+# Jekyll, and it excludes this file from the artifact.
+
+exclude:
+  - scripts/
+  - data/
+  - site.config.json
+  - README.md
+  - DEPLOYMENT-CHECKLIST.md
+  - OWNER-CONFIRMATIONS.md
+  - _config.yml
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+
+# The site is hand-written HTML with inline styles. Nothing here should be run
+# through Jekyll's Liquid templating — a stray {{ or {% in page copy would break
+# the build or, worse, silently render as nothing.
+plugins: []
+markdown: kramdown
