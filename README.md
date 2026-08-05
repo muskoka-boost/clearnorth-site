@@ -1,56 +1,117 @@
 # ClearNorth Window Cleaning — website
 
-## Domains
+Static HTML, no build step, no CSS framework. Every page is self-contained with
+its own inline `<style>` blocks, and header, footer and styling are duplicated
+into each file. To change text or styling, edit the `.html` file directly.
 
-- **Production — https://www.clearnorthwc.com/** — the final live site. This is the
-  real address of the business.
-- **Staging — https://clear.muskokadigitalboost.ca/** — a preview host only. It is
-  **not** the live site: don't hand it out, link to it, or put it on anything
-  printed.
+The one exception is a delimited block in each `<head>` — see
+[Domains and environments](#domains-and-environments) — which is generated and
+must not be hand-edited.
 
-Every host named in the repo still points at **staging**: the `<link rel="canonical">`
-and `og:url` on each page, the `og:image`/`twitter:image` URLs, and every `<loc>` in
-`sitemap.xml`. Going live means replacing `clear.muskokadigitalboost.ca` with
-`www.clearnorthwc.com` across those, together with the noindex removal under
-[Notes](#notes).
+## Domains and environments
 
-The single deliberate exception is `_next` in the booking form, which already points
-at production — see [Notes](#notes) for why.
+`site.config.json` is the single source of truth for every absolute URL the site
+emits and for whether it may be indexed. Three environments:
+
+| name | origin | indexable |
+|---|---|---|
+| `github-pages` | `https://muskoka-boost.github.io/clearnorth-site` | no |
+| `client-preview` | `https://clear.muskokadigitalboost.ca` | no |
+| `production` | `https://www.clearnorthwc.com` | **yes** |
+
+Both preview hosts are **preview only** — do not hand them out, link to them or
+put them on anything printed.
+
+```sh
+node scripts/apply-site-config.mjs                    # use config.active
+node scripts/apply-site-config.mjs --env=production
+node scripts/apply-site-config.mjs --check            # exit 1 if the HTML is stale
+```
+
+The script owns everything between `<!-- cn:generated:start -->` and
+`<!-- cn:generated:end -->` in each `<head>`: the canonical, the Open Graph and
+Twitter tags, the robots meta tag and all JSON-LD. It also writes `robots.txt`
+and `sitemap.xml`, and rewrites the forms' hidden `_next` fields. **Editing
+inside those markers is pointless — the next run overwrites it.**
+
+Each page declares what it is in a small JSON island just above the markers:
+
+```html
+<script type="application/json" id="cn-page-meta">{"page":"location","breadcrumbs":[…],"service":{…}}</script>
+```
+
+That is where a new page's type, breadcrumbs and Service schema come from. A
+page without one is skipped with a warning.
+
+Going live is documented step by step in [DEPLOYMENT-CHECKLIST.md](DEPLOYMENT-CHECKLIST.md).
 
 ## Structure
 
 ```
-index.html              home
-services/index.html     services
+index.html                          home
+services/index.html                 services hub
+services/<slug>/index.html          one page per service (7)
 service-areas/index.html            hub — links to all 36 area pages
-service-areas/<area>/index.html     one landing page per service area
-about-us/index.html
-faq/index.html
-contact/index.html
-booking/index.html      the quote form
-quote-submitted/index.html          confirmation after the form, redirects home
-privacy-policy/index.html
-assets/img/            photos + logo
-assets/fonts/          Manrope + Space Grotesk (self-hosted woff2)
-assets/js/site.*.js              nav toggle, FAQ accordion, scroll animations
-assets/js/quote-form.*.js        booking form — validation + background submit
-assets/js/quote-submitted.*.js   confirmation page — countdown + conversion event
-robots.txt sitemap.xml site.webmanifest
+service-areas/<slug>/index.html     one landing page per service area (36)
+about-us/  faq/  contact/  privacy-policy/
+request-a-quote/index.html          the quote form
+quote-submitted/index.html          confirmation after the quote form
+message-sent/index.html             confirmation after the contact form
+404.html
+
+data/locations.json                 the record behind the 36 area pages
+site.config.json                    origins, indexing, business details
+scripts/                            tooling (below)
+assets/img/                         photos, logo, favicons, OG image
+assets/fonts/                       Manrope + Space Grotesk (self-hosted woff2)
+assets/js/site.*.js                 nav toggle, FAQ accordion, scroll reveal
+assets/js/quote-form.*.js           quote form — validation + background submit
+assets/js/contact-form.js           contact form — validation + inline success
+assets/js/quote-submitted.*.js      confirmation page — countdown + conversion event
+assets/js/message-sent.js           same, for the contact form
 ```
 
 JS filenames carry a content hash. Editing one means renaming it to match and
-updating the `<script src>` that points at it, otherwise browsers serve the old copy.
+updating the `<script src>` that points at it, otherwise browsers serve the old
+copy. (`contact-form.js` and `message-sent.js` are unhashed — hash them if they
+start changing often.)
 
-Every page is self-contained HTML with inline `<style>` blocks — there is no
-build step and no CSS framework. To change text or styling, edit the `.html`
-file directly.
+## Tooling
+
+```sh
+node scripts/apply-site-config.mjs [--env=NAME] [--check]
+node scripts/check-pages.mjs [--env=NAME]        # crawl: links, metadata, a11y, schema
+node scripts/check-location-uniqueness.mjs [--json] [--strict]
+```
+
+`check-pages.mjs` is the pre-launch gate. It checks internal links and assets
+resolve, one H1 and one `<main>` per page, the skip link, unique self-referencing
+canonicals, unique titles and descriptions, one viewport tag, alt text and
+intrinsic dimensions on images, `type` on every button, forms with an action and
+every field labelled, no placeholder text, JSON-LD that parses and stays
+on-origin, no orphan pages, and that robots/sitemap match the environment. Pass
+it the same `--env` you passed to `apply-site-config.mjs`.
+
+`check-location-uniqueness.mjs` compares the main content of all 36 area pages
+using six-word shingles and reports each page's closest match, its share of
+corpus-wide template copy, repeated paragraphs and repeated runs of consecutive
+sentences. It is a warning system, not a verdict — read the pages it flags.
+
+The GitHub Pages workflow runs `apply-site-config.mjs --env=github-pages` and
+both checks before publishing, so the preview can never inherit a production
+config.
 
 ## Service-area pages
 
-Each community has its own page at `/service-areas/<slug>/`, with copy written
-for that area — property types, the kind of grime that turns up there, and how
-bookings work locally. They are reachable only from the boxes on
-`/service-areas/`, deliberately **not** from the nav bar.
+Each community has its own page at `/service-areas/<slug>/`, reachable from the
+boxes on `/service-areas/` and deliberately not from the nav bar.
+
+`data/locations.json` is the record behind them: place type, parent and child
+relationships, the service mix that page links to, the per-area copy, the local
+questions, the sources the geography was checked against, and
+`needsConfirmation` — the operational claims each page deliberately does **not**
+make. Do not turn one of those into page copy without an answer from the
+business; see [OWNER-CONFIRMATIONS.md](OWNER-CONFIRMATIONS.md).
 
 The 36 areas, in the order they appear on the hub page:
 
@@ -65,32 +126,33 @@ The 36 areas, in the order they appear on the hub page:
 
 Muskoka is broken down two ways, because cottage owners and homeowners search
 differently. By municipality: the district's six — the towns of Bracebridge,
-Gravenhurst and Huntsville, and the townships of Muskoka Lakes, Lake of Bays
-and Georgian Bay — plus Port Carling and Bala, villages inside Muskoka Lakes
-that people search for by name. And by water: `lake-muskoka`, `lake-rosseau`
-and `lake-joseph`, the big three, which is how a cottage owner thinks of their
-own place. The `muskoka` page leads with the lakes and links down to both sets.
+Gravenhurst and Huntsville, and the townships of Muskoka Lakes, Lake of Bays and
+Georgian Bay — plus Port Carling and Bala, villages inside Muskoka Lakes that
+people search for by name. And by water: `lake-muskoka`, `lake-rosseau` and
+`lake-joseph`, which is how a cottage owner thinks of their own place. Each page
+says which it is and links to its counterpart, so the two sets complement rather
+than compete; `muskoka` is the hub for both.
 
 Rosseau sits at the north end of Lake Rosseau but is in Seguin Township,
-**Parry Sound District** — not Muskoka. It is grouped and linked accordingly,
-and it is the closest served community to Parry Sound itself.
+**Parry Sound District** — not Muskoka. Both `rosseau` and `lake-rosseau` open by
+saying so and linking to the other. It is also the closest served community to
+Parry Sound itself.
 
-Each page ends with a **Nearby areas** block, and the hub groups areas by
-region. Both are geographic claims — check a map before changing either.
-Haliburton and Parry Sound are the easy mistake: both are cottage country, but
-Muskoka sits between them, so they are neither neighbours nor a group. Parry
-Sound belongs with Muskoka; Haliburton belongs with Kawartha Lakes, which it
-borders, and its closest towns are Dorset, Lake of Bays and Huntsville.
+Each page ends with a **Nearby areas** block, and child pages link back up to
+their region hub. Both are geographic claims — check a map before changing
+either. Haliburton and Parry Sound are the easy mistake: both are cottage
+country, but Muskoka sits between them, so they are neither neighbours nor a
+group. Parry Sound belongs with Muskoka; Haliburton belongs with Kawartha Lakes,
+which it borders, and its closest towns are Dorset, Lake of Bays and Huntsville.
 
-Adding another area means copying an existing folder, changing the copy, then
-adding a box to the grid on `/service-areas/` and a `<url>` to `sitemap.xml`.
-Header, footer and styling are duplicated into each page, the same as every
-other page on the site — there is still no build step.
+Adding an area means copying an existing folder, changing the copy, adding a
+record to `data/locations.json`, adding a box to the grid on `/service-areas/`,
+and running `apply-site-config.mjs` (which adds it to the sitemap).
 
 ## Previewing locally
 
-Links are root-relative (`/assets/...`), so open it through a web server
-rather than double-clicking the file:
+Links are relative, so open it through a web server rather than double-clicking
+the file:
 
 ```sh
 python3 -m http.server 8000
@@ -99,56 +161,56 @@ python3 -m http.server 8000
 
 ## Notes
 
-- Pages carry `<meta name="robots" content="noindex,nofollow">` and
-  `robots.txt` disallows all crawlers — this is the staging host keeping itself out
-  of search results, and it is also why the staging URL must not be shared. Remove
-  both when the site moves to **https://www.clearnorthwc.com/**. The one page that
-  keeps its noindex is `/quote-submitted/` — it is a confirmation page, which is also
-  why it is deliberately absent from `sitemap.xml`.
-- **The service list is duplicated in three places** and they have to agree, because
-  a page that advertises something the business does not do is the expensive kind of
-  mistake: the nine cards on `/services/`, the "Beyond the glass" snippet on all 36
-  service-area pages, and the *Services for quote* checkboxes on `/booking/`. The
-  current list is residential and commercial window cleaning, screen &amp; track
-  cleaning, screen repair, gutter cleaning, soft washing, pressure washing,
-  post-construction cleaning and maintenance plans. Screen repair, gutter cleaning,
-  soft washing and pressure washing are the newest, and carry a red **New** badge on
-  the `/services/` exterior row and on every area-page snippet — those badges are one
-  `<span>` each and should come off once the services stop being news.
-- The home page and the FAQ still describe the window-cleaning services only; neither
-  mentions the four newer ones.
-- The contact form has no `action` attribute, so it does not submit anywhere.
-- **The booking form** is plain HTML posting to Formspree
-  (`https://formspree.io/f/moeaaqly`) — it replaced an embedded Google Form, question
-  for question. Field names are the question text so the notification email reads like
-  the form, and the email field is named exactly `email` so Formspree sets the
-  reply-to from it.
-  - With JavaScript, `quote-form.js` validates the two "pick at least one" checkbox
+- **The service list is duplicated in four places** and they have to agree,
+  because a page that advertises something the business does not do is the
+  expensive kind of mistake: the ten cards on `/services/`, the seven dedicated
+  service pages, the per-area service block on all 36 area pages (drawn from
+  `serviceMix` in `data/locations.json`), and the *Services for quote*
+  checkboxes on `/request-a-quote/`. The current list is residential, commercial
+  and cottage window cleaning, screen & track cleaning, screen repair, gutter
+  cleaning, soft washing, pressure washing, post-construction cleaning and
+  maintenance plans.
+- **Both forms post to Formspree** (`https://formspree.io/f/moeaaqly`), told
+  apart by their `_subject` field. Field names on the quote form are the question
+  text so the notification email reads like the form, and the email field is
+  named exactly `email` so Formspree sets the reply-to from it.
+  - With JavaScript, the quote form validates its "pick at least one" checkbox
     groups, posts in the background and sends the browser to `/quote-submitted/`.
-  - Without JavaScript the browser posts the form itself and Formspree redirects to
-    the hidden `_next` field. That field is hard-coded to
-    `https://www.clearnorthwc.com/quote-submitted/`, since production is the only host
-    a real visitor ever submits from; `quote-form.js` rewrites it to whatever origin
-    is actually serving the page, so a normal staging visit stays on staging. **When
-    the site goes live this value is already correct — leave it on the production
-    host.**
-  - `/quote-submitted/` confirms the request and returns to the home page after 10
-    seconds. The redirect is a `<meta http-equiv="refresh">` so it happens with
-    JavaScript off; `quote-submitted.js` replaces it with a visible countdown that a
-    "Stay on this page" button can cancel.
+    The contact form stays put and shows an inline success state.
+  - Without JavaScript both post normally and Formspree redirects to the hidden
+    `_next` field — `/quote-submitted/` and `/message-sent/` respectively. Those
+    values are generated per environment; do not hand-edit them.
+  - Both confirmation pages return to the home page after 10 seconds via
+    `<meta http-equiv="refresh">`, so it works with JavaScript off; the matching
+    script replaces it with a visible countdown a "Stay on this page" button can
+    cancel.
 - Google Tag Manager (`GTM-M3J9CBV4`) loads on every page. It receives
-  `cn_phone_click`, `cn_email_click` and `cn_quote_click` from `site.js`, and
-  `cn_quote_submit` from the confirmation page — fired there rather than on submit so
-  it is not racing a page navigation, and so both submit routes count once.
+  `cn_phone_click`, `cn_email_click` and `cn_quote_click` from `site.js`,
+  `cn_quote_submit` from the quote confirmation page, and `cn_contact_submit`
+  from either the contact form (JavaScript path) or `/message-sent/` (no-JS
+  path) — never both, so submissions are counted once.
+- Claims on this site are deliberately narrow. Where something is not confirmed
+  — out-of-hours commercial work, water access, absent-owner visits, product
+  safety, guarantees, hours — the copy asks the visitor to raise it rather than
+  answering on the business's behalf. See
+  [OWNER-CONFIRMATIONS.md](OWNER-CONFIRMATIONS.md) before making any of them
+  more definite.
+- No `AggregateRating` or `Review` structured data anywhere, and no review count
+  or star average in the copy. No public review profile could be located to
+  substantiate one.
 
 ## Photos
 
-Job photos were refreshed on 2026-08-03. All images are re-encoded with no
-EXIF metadata, sized for their slot, and kept roughly 100-200 KB each.
+Job photos were refreshed on 2026-08-03. All images are re-encoded with no EXIF
+metadata, sized for their slot, and kept roughly 100–200 KB each. Each has a
+WebP sibling where WebP is actually smaller, and a 760px variant where the
+original is wide enough to warrant one; pages use `<picture>` with
+`display: contents` so the `<img>` keeps its place in the surrounding layout.
 
 | file | where it appears |
 |---|---|
-| `residential-front.jpg` | home hero, Residential card, **and the social/OG preview image on every page** |
+| `residential-front.jpg` | home hero, Residential card |
+| `og-clearnorth.jpg` | the 1200×630 social preview image on every page |
 | `residential-backyard.jpg` | Residential card (services), gallery tile |
 | `work-1.jpg` | home hero portrait, About "at work" |
 | `work-2.jpg` | gallery tile |
@@ -156,19 +218,17 @@ EXIF metadata, sized for their slot, and kept roughly 100-200 KB each.
 | `work-4.jpg` | "Our promise" pair (home), gallery tile |
 | `work-5.jpg` | Services + About hero |
 | `work-6.jpg` | Commercial card (home + services) |
-| `work-7.jpg` | Custom Packages card (home + services) |
+| `work-7.jpg` | Maintenance card (home + services) |
+| `before-after-gutters.jpg` | Exterior Cleaning card (services) |
 | `team-kyden.jpg`, `team-charles.jpg` | About — staff headshots |
+| `favicon-32/192/512.png`, `apple-touch-icon.png`, `favicon.ico` | square icons cut from the logo |
 
-Spares, in the repo but not yet placed on any page — swap one in by changing
-an `src`, or ask for a section to show them off:
+Spares, in the repo but not placed on any page: `work-8.jpg` (Popeyes
+storefront), `work-9.jpg` (green cottage in the woods),
+`before-after-storefront.jpg`.
 
-| file | what it is |
-|---|---|
-| `work-8.jpg` | Popeyes storefront (commercial) |
-| `work-9.jpg` | green cottage in the woods (residential) |
-| `before-after-gutters.jpg` | gutter clean-out, before/after split |
-| `before-after-storefront.jpg` | storefront glass, before/after split |
-
-Replacing a photo: keep the **same filename** and the site picks it up with no
-HTML edits. Landscape slots are 4:3, portrait slots are 3:4; anything else gets
-centre-cropped by `object-fit: cover`.
+Replacing a photo: keep the **same filename**, then regenerate its WebP and
+760px siblings. Landscape slots are 4:3, portrait slots are 3:4; anything else
+gets centre-cropped by `object-fit: cover`. The service-area pages carry no
+photography on purpose — there are no region-specific photos, and a general
+photo captioned as a local job would be a lie.

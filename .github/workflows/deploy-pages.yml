@@ -24,6 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Configure Pages
         # enablement: true turns Pages on for the repo if it isn't already,
         # so this deploys without anyone visiting the settings screen.
@@ -31,15 +35,31 @@ jobs:
         with:
           enablement: true
 
+      - name: Build for the Pages origin
+        # This deploy always publishes the development preview, whatever site.config.json
+        # currently says — canonicals, Open Graph URLs and schema are rewritten to the
+        # Pages origin, and robots.txt blocks crawling. A preview that inherited the
+        # production config would put an indexable duplicate of the live site online.
+        run: node scripts/apply-site-config.mjs --env=github-pages
+
+      - name: Check the build
+        run: |
+          node scripts/check-pages.mjs --env=github-pages
+          node scripts/check-location-uniqueness.mjs
+
       - name: Assemble the site
-        # Ship only the site itself - no .git, no workflow, no README.
+        # Ship only the site itself — no .git, no workflow, no tooling, no docs.
         run: |
           mkdir -p _site
           rsync -a \
             --exclude '.git' \
             --exclude '.github' \
             --exclude '_site' \
-            --exclude 'README.md' \
+            --exclude 'scripts' \
+            --exclude 'data' \
+            --exclude 'node_modules' \
+            --exclude 'site.config.json' \
+            --exclude '*.md' \
             ./ _site/
           # Stop Pages running the files through Jekyll.
           touch _site/.nojekyll
