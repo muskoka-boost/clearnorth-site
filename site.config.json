@@ -79,6 +79,7 @@
   },
 
   "noindexPaths": [
-    "/quote-submitted/"
+    "/quote-submitted/",
+    "/message-sent/"
   ]
 }

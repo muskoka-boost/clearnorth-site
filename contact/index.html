@@ -7,6 +7,42 @@
     *{box-sizing:border-box}
     body{margin:0;background:#fafafa;color:#121212;font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
     a{color:#9e0c24}a:hover{color:#c8102e}
+
+    /* Enquiry form. Same markup vocabulary as the quote form on /request-a-quote/,
+       so the two look and behave identically. */
+    input,textarea,select,button{font-family:Manrope,sans-serif}
+    .cn-form{display:flex;flex-direction:column;gap:24px}
+    .cn-fq{display:flex;flex-direction:column;gap:9px}
+    /* Fieldsets stay block-level on purpose: a flex fieldset lays its legend out
+       inconsistently across browsers, so the spacing here is done with margins. */
+    .cn-fs{display:block;border:0;padding:0;margin:0;min-width:0}
+    .cn-fs>legend{padding:0;margin:0 0 9px}
+    .cn-fs>.cn-help{margin:-4px 0 9px}
+    .cn-fs>.cn-input,.cn-fs>.cn-err{margin-top:9px}
+    .cn-q{font-size:14.5px;font-weight:700;color:#2e2e33}
+    .cn-q .cn-req{color:#c8102e}
+    .cn-help{font-size:13.5px;font-weight:500;color:#8a8f94;margin:-4px 0 2px}
+    .cn-input{width:100%;padding:13px 14px;border:1px solid #dcdce0;border-radius:12px;font-size:15px;font-weight:500;color:#121212;background:#fff;transition:.15s}
+    .cn-input::placeholder{color:#a6a9ae;font-weight:500}
+    .cn-input:focus{outline:none;border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
+    textarea.cn-input{resize:vertical}
+    .cn-opts{display:flex;flex-direction:column;gap:8px}
+    .cn-opts.cn-row{flex-direction:row;flex-wrap:wrap}
+    .cn-opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e6e6e9;border-radius:12px;background:#fff;font-size:15px;font-weight:600;color:#2e2e33;cursor:pointer;transition:.15s}
+    .cn-opts.cn-row .cn-opt{flex:1 1 130px}
+    .cn-opt:hover{border-color:#c8102e}
+    .cn-opt:focus-within{border-color:#c8102e;box-shadow:0 0 0 3px rgba(200,16,46,.15)}
+    .cn-opt:has(input:checked){border-color:#c8102e;background:#fcebee}
+    .cn-opt input{width:18px;height:18px;flex:none;margin:0;accent-color:#c8102e}
+    .cn-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .cn-err{display:none;font-size:13px;font-weight:600;color:#c8102e}
+    .cn-bad>.cn-err,.cn-err.cn-show{display:block}
+    .cn-submit{padding:16px;border:0;border-radius:12px;background:#c8102e;color:#fff;font-weight:700;font-size:16px;cursor:pointer;transition:.15s}
+    .cn-submit[disabled]{opacity:.6;cursor:default}
+    .cn-note{font-size:13px;color:#8a8f94;text-align:center;margin:0}
+    .cn-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+    .cn-ok{margin:0;padding:14px 16px;border-radius:12px;background:#f0f9f2;border:1px solid #bfe3c8;color:#1d5c30;font-size:14.5px;font-weight:600;line-height:1.6}
+    .cn-ok:focus{outline:3px solid #c8102e;outline-offset:2px}
     input,textarea{font-family:Manrope,sans-serif}
     input:focus,textarea:focus{outline:none;border-color:#c8102e !important;box-shadow:0 0 0 3px rgba(200, 16, 46, 0.15)}
     @media(max-width:900px){.cn-c{grid-template-columns:1fr !important}}
@@ -209,16 +245,48 @@ img{ max-width:100%; }
 
   <div style="background: rgb(255, 255, 255); border: 1px solid rgb(230, 230, 233); border-radius: 22px; padding: 32px; box-shadow: rgba(18, 18, 18, 0.4) 0px 22px 50px -34px;">
     <h2 style="font-family: &quot;Space Grotesk&quot;, sans-serif; font-size: 24px; margin: 0px 0px 6px;">Send us a message</h2>
-    <p style="font-size: 14.5px; color: rgb(138, 143, 148); margin: 0px 0px 24px;">Prefer to book directly? Use our <a href="../request-a-quote/">quote form</a>.</p>
-    <form style="display: flex; flex-direction: column; gap: 16px;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; font-weight: 700; color: rgb(46, 46, 51);">Name *<input type="text" placeholder="Your name" style="padding: 13px 14px; border: 1px solid rgb(220, 220, 224); border-radius: 12px; font-size: 15px; font-weight: 500; transition: 0.15s;"></label>
-        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; font-weight: 700; color: rgb(46, 46, 51);">Email *<input type="email" placeholder="you@email.com" style="padding: 13px 14px; border: 1px solid rgb(220, 220, 224); border-radius: 12px; font-size: 15px; font-weight: 500; transition: 0.15s;"></label>
+    <p style="font-size: 14.5px; color: rgb(138, 143, 148); margin: 0px 0px 24px;">General questions, scheduling and anything that is not a quote. Ready for a price? The <a href="../request-a-quote/">quote form</a> asks the questions we need to answer one.</p>
+
+    <form class="cn-form" data-cn-contact action="https://formspree.io/f/moeaaqly" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Website enquiry — ClearNorth contact form">
+      <!-- Where Formspree returns the browser when it posts the form itself (JavaScript
+           off). Generated per environment by scripts/apply-site-config.mjs. -->
+      <input type="hidden" name="_next" value="https://clear.muskokadigitalboost.ca/message-sent/">
+      <input class="cn-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="cn-grid2">
+        <div class="cn-fq">
+          <label class="cn-q" for="cn-name">Name <span class="cn-req">*</span></label>
+          <input class="cn-input" id="cn-name" type="text" name="Name" autocomplete="name" placeholder="Your name" required aria-describedby="cn-name-err">
+          <p class="cn-err" id="cn-name-err"></p>
+        </div>
+        <div class="cn-fq">
+          <label class="cn-q" for="cn-email">Email <span class="cn-req">*</span></label>
+          <input class="cn-input" id="cn-email" type="email" name="email" autocomplete="email" placeholder="you@email.com" required aria-describedby="cn-email-err">
+          <p class="cn-err" id="cn-email-err"></p>
+        </div>
       </div>
-      <label style="display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; font-weight: 700; color: rgb(46, 46, 51);">Subject<input type="text" placeholder="How can we help?" style="padding: 13px 14px; border: 1px solid rgb(220, 220, 224); border-radius: 12px; font-size: 15px; font-weight: 500; transition: 0.15s;"></label>
-      <label style="display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; font-weight: 700; color: rgb(46, 46, 51);">Message *<textarea rows="5" placeholder="Tell us about your property and what you need cleaned…" style="padding: 13px 14px; border: 1px solid rgb(220, 220, 224); border-radius: 12px; font-size: 15px; font-weight: 500; resize: vertical; transition: 0.15s;"></textarea></label>
-      <button type="submit" class="cnh-4" style="margin-top: 4px; padding: 15px; border: 0px; border-radius: 12px; background: rgb(200, 16, 46); color: rgb(255, 255, 255); font-weight: 700; font-size: 16px; cursor: pointer; font-family: Manrope, sans-serif;">Submit</button>
-      
+
+      <div class="cn-fq">
+        <label class="cn-q" for="cn-phone">Phone</label>
+        <input class="cn-input" id="cn-phone" type="tel" name="Phone" autocomplete="tel" placeholder="Optional — if you would rather we called">
+      </div>
+
+      <div class="cn-fq">
+        <label class="cn-q" for="cn-subject">Subject</label>
+        <input class="cn-input" id="cn-subject" type="text" name="Subject" placeholder="How can we help?">
+      </div>
+
+      <div class="cn-fq">
+        <label class="cn-q" for="cn-message">Message <span class="cn-req">*</span></label>
+        <textarea class="cn-input" id="cn-message" name="Message" rows="5" placeholder="Tell us about your property and what you need cleaned…" required aria-describedby="cn-message-err"></textarea>
+        <p class="cn-err" id="cn-message-err"></p>
+      </div>
+
+      <p class="cn-err" data-form-error role="alert" style="text-align: center;"></p>
+      <p class="cn-ok" data-form-ok role="status" hidden></p>
+      <button class="cn-submit cnh-4" type="submit">Send message</button>
+      <p class="cn-note">We usually reply within one business day. Your details are used to answer your enquiry and nothing else — see our <a href="../privacy-policy/">privacy policy</a>.</p>
     </form>
   </div></section><section style="max-width: 1200px; margin: 0px auto; padding: 20px 24px 70px;">
   <div style="border-radius: 22px; overflow: hidden; border: 1px solid rgb(230, 230, 233); box-shadow: rgba(18, 18, 18, 0.4) 0px 22px 50px -38px;">
@@ -274,4 +342,5 @@ img{ max-width:100%; }
   <a href="tel:2899434395" class="cn-sticky-call" style="display: none; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; border-radius: 999px; background: rgb(18, 18, 18); color: rgb(255, 255, 255); text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: rgba(18, 18, 18, 0.9) 0px 14px 30px -12px;">☎ Call</a></div></div></div></div>
 
 <script src="../assets/js/site.b6e0d366.js" defer></script>
+<script src="../assets/js/contact-form.js" defer></script>
 </body></html>

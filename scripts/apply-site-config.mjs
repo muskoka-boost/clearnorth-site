@@ -301,11 +301,12 @@ for (const file of htmlFiles().sort()) {
 
   // Formspree's `_next` is the no-JavaScript return address. It has to be absolute and
   // it has to belong to whichever host is serving the form, or a visitor with JS off
-  // gets bounced onto a different environment after submitting.
-  next = next.replace(
-    /(<input type="hidden" name="_next" value=")[^"]*(")/g,
-    `$1${url('/quote-submitted/')}$2`
-  );
+  // gets bounced onto a different environment after submitting. Only the origin is
+  // rewritten — which confirmation page a form returns to is the page's own business.
+  next = next.replace(/(<input type="hidden" name="_next" value=")([^"]*)(")/g, (m, pre, value, post) => {
+    const to = value.replace(/^https?:\/\/[^/]+/, '');
+    return pre + url(to.startsWith('/') ? to : '/' + to) + post;
+  });
 
   if (writeOut(file, next)) written.push(path.relative(ROOT, file));
 
