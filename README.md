@@ -202,10 +202,22 @@ python3 -m http.server 8000
 ## Photos
 
 Job photos were refreshed on 2026-08-03. All images are re-encoded with no EXIF
-metadata, sized for their slot, and kept roughly 100–200 KB each. Each has a
-WebP sibling where WebP is actually smaller, and a 760px variant where the
-original is wide enough to warrant one; pages use `<picture>` with
-`display: contents` so the `<img>` keeps its place in the surrounding layout.
+metadata and sized for their slot. Derivatives only ship when they earn their
+place: a WebP sibling where WebP actually beats the JPEG, and a narrower step
+(480px for the portraits, 760px and up for the landscapes) where the render slot
+is materially smaller than the original. Pages use `<picture>` with
+`display: contents`, so the `<img>` keeps its position in the surrounding
+flex/grid layout and its inline styles keep working.
+
+Two encodes exist purely for the scrimmed heroes on Services and About
+(`work-5-hero-*`). Those sit under a 55–90% black gradient, so a lower quality is
+invisible there — the unobscured gallery use of `work-5` on the home page keeps
+the original file.
+
+Only the true above-the-fold image on each page loads eagerly; everything else is
+`loading="lazy"`. Getting this wrong is expensive: four eagerly-loaded cards on
+`/services/` were pulling 900 KB in competition with the hero and cost that page
+20 Lighthouse points.
 
 | file | where it appears |
 |---|---|
