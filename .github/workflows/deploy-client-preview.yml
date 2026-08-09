@@ -143,7 +143,8 @@ jobs:
       - name: Confirm the remote directory is the site root
         # The mirror below deletes remote files that are not in the build. Pointed at the
         # wrong directory that is destructive, so refuse to run unless the target looks
-        # like the site we already serve.
+        # like the site we already serve. `cd` first, then list: `cls -1 some/dir/` prints
+        # every entry with that prefix attached, which no bare filename will ever match.
         env:
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           REMOTE_DIR: ${{ steps.remote.outputs.dir }}
@@ -155,7 +156,8 @@ jobs:
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             open -u '$FTP_USERNAME' --env-password '$FTP_SERVER';
-            cls -1 '$REMOTE_DIR/';
+            cd '$REMOTE_DIR';
+            cls -1;
           ")
           echo "$listing"
           if ! grep -qE '^index\.html$' <<<"$listing"; then
