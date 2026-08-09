@@ -40,9 +40,12 @@ existed the client-preview host was updated by hand and drifted ten commits
 behind — missing all seven service pages and `/request-a-quote/`, and still
 serving the `/booking/` page the repo had removed.
 
-> **The FTPS deploy's `push:` trigger is commented out until its first dry run
-> has been read and the document root confirmed.** Uncommenting it is the
-> follow-up commit, and that push is the first real deploy.
+The client-preview host was first brought back into step on 2026-08-09. Besides
+the missing pages, that deploy removed three things a hand-upload had left in the
+document root: `booking/`, `README.md`, and `clearnorth-site-main.zip` — a
+complete copy of the repository, publicly downloadable. `robots.txt` said
+`Disallow: /`, which asks crawlers not to look; it does not stop anyone with the
+URL. Deploying from CI is what keeps stray files from accumulating there.
 
 ### What the FTPS deploy needs
 
@@ -64,6 +67,15 @@ there.
 Run it manually from the Actions tab to preview a change: `dry_run` defaults to
 **true** on `workflow_dispatch`, which lists every upload and deletion without
 performing any. Push-triggered runs always deploy.
+
+### Why the deploy connects to `rev6.web-dns1.com`
+
+The FTPS certificate is issued for the shared hosting server's own name, not for
+`ftp.clear.muskokadigitalboost.ca`, and the server sends only its leaf — no
+intermediate. Connecting by the server's real name, with Let's Encrypt's YR1 and
+Root YR supplied from `.github/ftps-trust/`, is what lets the deploy verify the
+certificate properly rather than skip the check. Full reasoning, fingerprints and
+the failure it fixes are in `.github/ftps-trust/README.md`.
 
 ---
 

@@ -15,19 +15,21 @@ name: Deploy to the client-preview host
 # `public_html` (the cPanel default).
 
 env:
-  FTP_SERVER: ftp.clear.muskokadigitalboost.ca
-  FTP_USERNAME: clearmuskokadigi
+  # The shared hosting server itself, not the ftp.clear.muskokadigitalboost.ca alias
+  # that points at it. Both reach the same machine and FTP picks the account from the
+  # username, but only this name matches the TLS certificate the server presents, so
+  # connecting by it means hostname verification passes instead of being switched off.
+  # See .github/ftps-trust/README.md.
+  FTP_SERVER: rev6.web-dns1.com
+  # A dedicated FTP account rooted at /home/clearmuskokadigi, so `public_html` below is
+  # relative to its login directory.
+  FTP_USERNAME: Yaba@clear.muskokadigitalboost.ca
+  # System roots plus the two Let's Encrypt certificates the server does not send.
+  FTP_CA_FILE: /tmp/ftps-ca.pem
 
 on:
-  # TEMPORARY — the push trigger is held back until one dry run has been read and the
-  # document root confirmed. `workflow_dispatch` only works for workflows already on the
-  # default branch, so this workflow has to be merged before it can be tested at all, and
-  # a live push-triggered mirror is not the way to find out that `public_html` was the
-  # wrong guess. Uncomment as the follow-up commit once the dry run looks right: that
-  # push is itself the first real deploy.
-  #
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -88,6 +90,49 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
+      - name: Build the trust store and verify the FTPS certificate
+        # The server sends only its leaf certificate, and its chain (Let's Encrypt YR1,
+        # under ISRG Root YR) is newer than the runner's ca-certificates. Supplying the
+        # missing links is what makes verification possible at all; without them lftp
+        # reports "the certificate is NOT trusted. The certificate issuer is unknown."
+        #
+        # Checking the chain here rather than leaving it to lftp means a host that
+        # changes certificate fails with its subject and issuer printed, instead of one
+        # opaque line.
+        run: |
+          set -euo pipefail
+          cat /etc/ssl/certs/ca-certificates.crt \
+              .github/ftps-trust/int-yr1.pem \
+              .github/ftps-trust/root-yr.pem > "$FTP_CA_FILE"
+
+          # Bounded, and retried: the host has refused connections from a runner before,
+          # hanging until the kernel gave up two minutes later. Fail in seconds instead,
+          # and keep stderr — an empty capture file says nothing about why.
+          for attempt in 1 2 3; do
+            timeout 30 openssl s_client -starttls ftp -connect "$FTP_SERVER:21" \
+              -servername "$FTP_SERVER" -showcerts </dev/null >/tmp/ftps.txt 2>/tmp/ftps.err && break
+            echo "attempt $attempt: no certificate from $FTP_SERVER:21"
+            sed -n '1,10p' /tmp/ftps.err
+            [ "$attempt" = 3 ] || sleep 20
+          done
+
+          sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p' /tmp/ftps.txt > /tmp/ftps.pem
+          if [ ! -s /tmp/ftps.pem ]; then
+            echo "::error::Could not read a certificate from $FTP_SERVER:21 after 3 attempts. If this keeps happening the host is refusing the runner's IP — check cPHulk and any FTP firewall rules in cPanel."
+            sed -n '1,40p' /tmp/ftps.err
+            sed -n '1,40p' /tmp/ftps.txt
+            exit 1
+          fi
+
+          echo "--- presented by $FTP_SERVER ---"
+          openssl x509 -in /tmp/ftps.pem -noout -subject -issuer -dates -fingerprint -sha256
+          openssl x509 -in /tmp/ftps.pem -noout -ext subjectAltName || echo "(no SAN)"
+
+          if ! openssl verify -CAfile "$FTP_CA_FILE" /tmp/ftps.pem; then
+            echo "::error::$FTP_SERVER presented a certificate that does not verify against .github/ftps-trust/. If the host moved the account to another server, update FTP_SERVER."
+            exit 1
+          fi
+
       - name: Resolve the remote directory
         id: remote
         env:
@@ -101,18 +146,21 @@ jobs:
       - name: Confirm the remote directory is the site root
         # The mirror below deletes remote files that are not in the build. Pointed at the
         # wrong directory that is destructive, so refuse to run unless the target looks
-        # like the site we already serve.
+        # like the site we already serve. `cd` first, then list: `cls -1 some/dir/` prints
+        # every entry with that prefix attached, which no bare filename will ever match.
         env:
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           REMOTE_DIR: ${{ steps.remote.outputs.dir }}
         run: |
           set -euo pipefail
           listing=$(lftp -c "
+            set ssl:ca-file '$FTP_CA_FILE';
             set ssl:verify-certificate true;
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             open -u '$FTP_USERNAME' --env-password '$FTP_SERVER';
-            cls -1 '$REMOTE_DIR/';
+            cd '$REMOTE_DIR';
+            cls -1;
           ")
           echo "$listing"
           if ! grep -qE '^index\.html$' <<<"$listing"; then
@@ -141,6 +189,7 @@ jobs:
             MODE=""
           fi
           lftp -c "
+            set ssl:ca-file '$FTP_CA_FILE';
             set ssl:verify-certificate true;
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
