@@ -65,6 +65,15 @@ Run it manually from the Actions tab to preview a change: `dry_run` defaults to
 **true** on `workflow_dispatch`, which lists every upload and deletion without
 performing any. Push-triggered runs always deploy.
 
+### Why the deploy connects to `rev6.web-dns1.com`
+
+The FTPS certificate is issued for the shared hosting server's own name, not for
+`ftp.clear.muskokadigitalboost.ca`, and the server sends only its leaf — no
+intermediate. Connecting by the server's real name, with Let's Encrypt's YR1 and
+Root YR supplied from `.github/ftps-trust/`, is what lets the deploy verify the
+certificate properly rather than skip the check. Full reasoning, fingerprints and
+the failure it fixes are in `.github/ftps-trust/README.md`.
+
 ---
 
 ## Before launch

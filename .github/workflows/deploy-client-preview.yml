@@ -15,8 +15,15 @@ name: Deploy to the client-preview host
 # `public_html` (the cPanel default).
 
 env:
-  FTP_SERVER: ftp.clear.muskokadigitalboost.ca
+  # The shared hosting server itself, not the ftp.clear.muskokadigitalboost.ca alias
+  # that points at it. Both reach the same machine and FTP picks the account from the
+  # username, but only this name matches the TLS certificate the server presents, so
+  # connecting by it means hostname verification passes instead of being switched off.
+  # See .github/ftps-trust/README.md.
+  FTP_SERVER: rev6.web-dns1.com
   FTP_USERNAME: clearmuskokadigi
+  # System roots plus the two Let's Encrypt certificates the server does not send.
+  FTP_CA_FILE: /tmp/ftps-ca.pem
 
 on:
   # TEMPORARY — the push trigger is held back until one dry run has been read and the
@@ -88,12 +95,21 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Inspect the FTPS certificate
-        # The host presents a self-signed certificate, so there is no public CA to check
-        # it against and `.github/ftps-cert.pem` is pinned instead. This prints what the
-        # server is actually offering, so a rotation shows up as a readable diff here
-        # rather than as "the certificate is NOT trusted" from lftp.
+      - name: Build the trust store and verify the FTPS certificate
+        # The server sends only its leaf certificate, and its chain (Let's Encrypt YR1,
+        # under ISRG Root YR) is newer than the runner's ca-certificates. Supplying the
+        # missing links is what makes verification possible at all; without them lftp
+        # reports "the certificate is NOT trusted. The certificate issuer is unknown."
+        #
+        # Checking the chain here rather than leaving it to lftp means a host that
+        # changes certificate fails with its subject and issuer printed, instead of one
+        # opaque line.
         run: |
+          set -euo pipefail
+          cat /etc/ssl/certs/ca-certificates.crt \
+              .github/ftps-trust/int-yr1.pem \
+              .github/ftps-trust/root-yr.pem > "$FTP_CA_FILE"
+
           openssl s_client -starttls ftp -connect "$FTP_SERVER:21" \
             -servername "$FTP_SERVER" -showcerts </dev/null 2>/dev/null > /tmp/ftps.txt || true
           sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p' /tmp/ftps.txt > /tmp/ftps.pem
@@ -102,12 +118,15 @@ jobs:
             sed -n '1,40p' /tmp/ftps.txt
             exit 1
           fi
+
           echo "--- presented by $FTP_SERVER ---"
           openssl x509 -in /tmp/ftps.pem -noout -subject -issuer -dates -fingerprint -sha256
-          echo "--- subject alternative names ---"
-          openssl x509 -in /tmp/ftps.pem -noout -ext subjectAltName || echo "(none)"
-          echo "--- PEM ---"
-          cat /tmp/ftps.pem
+          openssl x509 -in /tmp/ftps.pem -noout -ext subjectAltName || echo "(no SAN)"
+
+          if ! openssl verify -CAfile "$FTP_CA_FILE" /tmp/ftps.pem; then
+            echo "::error::$FTP_SERVER presented a certificate that does not verify against .github/ftps-trust/. If the host moved the account to another server, update FTP_SERVER."
+            exit 1
+          fi
 
       - name: Resolve the remote directory
         id: remote
@@ -129,6 +148,7 @@ jobs:
         run: |
           set -euo pipefail
           listing=$(lftp -c "
+            set ssl:ca-file '$FTP_CA_FILE';
             set ssl:verify-certificate true;
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
@@ -162,6 +182,7 @@ jobs:
             MODE=""
           fi
           lftp -c "
+            set ssl:ca-file '$FTP_CA_FILE';
             set ssl:verify-certificate true;
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
