@@ -24,6 +24,49 @@ config, so a stale build cannot reach a branch unnoticed.
 
 ---
 
+## How each host is deployed
+
+The two preview hosts are unrelated pieces of infrastructure, and each needs its
+own workflow. Neither one updates the other.
+
+| host | served by | workflow |
+|---|---|---|
+| `muskoka-boost.github.io/clearnorth-site` | GitHub Pages | `.github/workflows/deploy-pages.yml` |
+| `clear.muskokadigitalboost.ca` | cPanel / LiteSpeed, over FTPS | `.github/workflows/deploy-client-preview.yml` |
+
+Both run on every push to `main`, each building for its own environment, so the
+two previews and the repo stay in step. Before `deploy-client-preview.yml`
+existed the client-preview host was updated by hand and drifted ten commits
+behind — missing all seven service pages and `/request-a-quote/`, and still
+serving the `/booking/` page the repo had removed.
+
+> **The FTPS deploy's `push:` trigger is commented out until its first dry run
+> has been read and the document root confirmed.** Uncommenting it is the
+> follow-up commit, and that push is the first real deploy.
+
+### What the FTPS deploy needs
+
+One repository secret, `FTP_PASSWORD` (Settings → Secrets and variables →
+Actions). The host and the account name are not credentials, so they sit in the
+workflow's `env:` block where they can be read alongside the code that uses them.
+
+Optionally a repository *variable* `FTP_REMOTE_DIR` if the document root is not
+`public_html`.
+
+The upload is an `lftp mirror --reverse --delete`, so anything on the host that
+is not in the build is removed — that is what retires pages like `/booking/`.
+Host-managed files are excluded and never touched: `.htaccess`, `cgi-bin/`,
+`.well-known/`, `error_log`, `php.ini`, `.user.ini`, `.ftpquota`. Because
+`--delete` is destructive when aimed at the wrong directory, the job first lists
+the target and refuses to run unless it finds `index.html` and `service-areas/`
+there.
+
+Run it manually from the Actions tab to preview a change: `dry_run` defaults to
+**true** on `workflow_dispatch`, which lists every upload and deletion without
+performing any. Push-triggered runs always deploy.
+
+---
+
 ## Before launch
 
 ### 1. Settle the canonical domain

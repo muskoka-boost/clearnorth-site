@@ -1,0 +1,181 @@
+name: Deploy to the client-preview host
+
+# The client-preview host (clear.muskokadigitalboost.ca) is ordinary cPanel/LiteSpeed
+# hosting, not GitHub Pages, so nothing about deploy-pages.yml reaches it. Without this
+# workflow the only way to update it is a hand-made FTP upload, which is how it came to
+# be ten commits behind the repo.
+#
+# The host and account name are below in plain sight: neither is a credential, and
+# having them here means the workflow is readable without cross-referencing the
+# settings screen. Only the password is a secret:
+#
+#   FTP_PASSWORD  Settings -> Secrets and variables -> Actions
+#
+# Optionally a repository variable FTP_REMOTE_DIR if the document root is not
+# `public_html` (the cPanel default).
+
+env:
+  FTP_SERVER: ftp.clear.muskokadigitalboost.ca
+  FTP_USERNAME: clearmuskokadigi
+
+on:
+  # TEMPORARY — the push trigger is held back until one dry run has been read and the
+  # document root confirmed. `workflow_dispatch` only works for workflows already on the
+  # default branch, so this workflow has to be merged before it can be tested at all, and
+  # a live push-triggered mirror is not the way to find out that `public_html` was the
+  # wrong guess. Uncomment as the follow-up commit once the dry run looks right: that
+  # push is itself the first real deploy.
+  #
+  # push:
+  #   branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'List what would change without uploading or deleting anything'
+        type: boolean
+        default: true
+      remote_dir:
+        description: 'Document root on the FTP host (blank = FTP_REMOTE_DIR, else public_html)'
+        type: string
+        default: ''
+
+# One upload at a time. A half-finished mirror racing a second one would leave the
+# preview host serving a mix of two commits.
+concurrency:
+  group: client-preview-ftp
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build for the client-preview origin
+        # Explicit --env, not site.config.json's `active`, so this workflow cannot
+        # publish production canonicals to the preview host if someone flips `active`
+        # while preparing the real launch.
+        run: node scripts/apply-site-config.mjs --env=client-preview
+
+      - name: Check the build
+        run: |
+          node scripts/check-pages.mjs --env=client-preview
+          node scripts/check-location-uniqueness.mjs
+
+      - name: Assemble the site
+        # Same exclusions as the Pages deploy: ship the site, never the tooling, the
+        # location data, the site config or the internal docs.
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            --exclude 'scripts' \
+            --exclude 'data' \
+            --exclude 'node_modules' \
+            --exclude 'site.config.json' \
+            --exclude '_config.yml' \
+            --exclude '*.md' \
+            ./ _site/
+          echo "Files to publish:"
+          find _site -type f | sort | sed 's/^/  /'
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Resolve the remote directory
+        id: remote
+        env:
+          INPUT_DIR: ${{ inputs.remote_dir }}
+          VAR_DIR: ${{ vars.FTP_REMOTE_DIR }}
+        run: |
+          DIR="${INPUT_DIR:-${VAR_DIR:-public_html}}"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Mirroring into: $DIR"
+
+      - name: Confirm the remote directory is the site root
+        # The mirror below deletes remote files that are not in the build. Pointed at the
+        # wrong directory that is destructive, so refuse to run unless the target looks
+        # like the site we already serve.
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR: ${{ steps.remote.outputs.dir }}
+        run: |
+          set -euo pipefail
+          listing=$(lftp -c "
+            set ssl:verify-certificate true;
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            open -u '$FTP_USERNAME' --env-password '$FTP_SERVER';
+            cls -1 '$REMOTE_DIR/';
+          ")
+          echo "$listing"
+          if ! grep -qE '^index\.html$' <<<"$listing"; then
+            echo "::error::$REMOTE_DIR has no index.html — this does not look like the document root. Refusing to mirror."
+            exit 1
+          fi
+          if ! grep -qE '^service-areas/?$' <<<"$listing"; then
+            echo "::error::$REMOTE_DIR has no service-areas/ — this does not look like the document root. Refusing to mirror."
+            exit 1
+          fi
+
+      - name: Mirror the site over FTPS
+        env:
+          # lftp reads the password from this variable, so it never appears in a
+          # command line or in the job's process list.
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR: ${{ steps.remote.outputs.dir }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          # push events have no inputs, so dry_run is empty there: a push deploys.
+          if [ "${DRY_RUN:-false}" = "true" ]; then
+            MODE="--dry-run"
+            echo "Dry run — nothing will be uploaded or deleted."
+          else
+            MODE=""
+          fi
+          lftp -c "
+            set ssl:verify-certificate true;
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set net:max-retries 3;
+            set net:timeout 20;
+            open -u '$FTP_USERNAME' --env-password '$FTP_SERVER';
+            mirror --reverse --delete --verbose --parallel=4 $MODE \
+              --exclude-glob .htaccess \
+              --exclude-glob .ftpquota \
+              --exclude-glob .user.ini \
+              --exclude-glob php.ini \
+              --exclude-glob error_log \
+              --exclude-glob cgi-bin/ \
+              --exclude-glob .well-known/ \
+              _site/ '$REMOTE_DIR/';
+          "
+
+      - name: Verify the deployed pages
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          set -euo pipefail
+          fail=0
+          for p in "" about-us/ contact/ faq/ privacy-policy/ request-a-quote/ \
+                   services/ services/residential-window-cleaning/ \
+                   services/commercial-window-cleaning/ services/cottage-window-cleaning/ \
+                   services/exterior-cleaning/ services/maintenance-plans/ \
+                   services/post-construction-window-cleaning/ services/screen-track-cleaning/ \
+                   service-areas/ service-areas/hampton/ message-sent/ quote-submitted/; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' "https://clear.muskokadigitalboost.ca/$p")
+            echo "$code  /$p"
+            [ "$code" = "200" ] || fail=1
+          done
+          # Removed in "Make the contact form actually deliver, and stop promising
+          # booking". If it is still answering, the mirror did not delete it.
+          gone=$(curl -sS -o /dev/null -w '%{http_code}' "https://clear.muskokadigitalboost.ca/booking/")
+          echo "$gone  /booking/ (expected 404)"
+          [ "$gone" = "404" ] || fail=1
+          exit $fail
