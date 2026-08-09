@@ -28,15 +28,8 @@ env:
   FTP_CA_FILE: /tmp/ftps-ca.pem
 
 on:
-  # TEMPORARY — the push trigger is held back until one dry run has been read and the
-  # document root confirmed. `workflow_dispatch` only works for workflows already on the
-  # default branch, so this workflow has to be merged before it can be tested at all, and
-  # a live push-triggered mirror is not the way to find out that `public_html` was the
-  # wrong guess. Uncomment as the follow-up commit once the dry run looks right: that
-  # push is itself the first real deploy.
-  #
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       dry_run:

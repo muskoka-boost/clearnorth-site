@@ -40,9 +40,12 @@ existed the client-preview host was updated by hand and drifted ten commits
 behind — missing all seven service pages and `/request-a-quote/`, and still
 serving the `/booking/` page the repo had removed.
 
-> **The FTPS deploy's `push:` trigger is commented out until its first dry run
-> has been read and the document root confirmed.** Uncommenting it is the
-> follow-up commit, and that push is the first real deploy.
+The client-preview host was first brought back into step on 2026-08-09. Besides
+the missing pages, that deploy removed three things a hand-upload had left in the
+document root: `booking/`, `README.md`, and `clearnorth-site-main.zip` — a
+complete copy of the repository, publicly downloadable. `robots.txt` said
+`Disallow: /`, which asks crawlers not to look; it does not stop anyone with the
+URL. Deploying from CI is what keeps stray files from accumulating there.
 
 ### What the FTPS deploy needs
 
