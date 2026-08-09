@@ -40,15 +40,11 @@ existed the client-preview host was updated by hand and drifted ten commits
 behind — missing all seven service pages and `/request-a-quote/`, and still
 serving the `/booking/` page the repo had removed.
 
-### Secrets the FTPS deploy needs
+### What the FTPS deploy needs
 
-Settings → Secrets and variables → Actions:
-
-| secret | value |
-|---|---|
-| `FTP_SERVER` | `ftp.clear.muskokadigitalboost.ca` |
-| `FTP_USERNAME` | the cPanel FTP account |
-| `FTP_PASSWORD` | its password |
+One repository secret, `FTP_PASSWORD` (Settings → Secrets and variables →
+Actions). The host and the account name are not credentials, so they sit in the
+workflow's `env:` block where they can be read alongside the code that uses them.
 
 Optionally a repository *variable* `FTP_REMOTE_DIR` if the document root is not
 `public_html`.

@@ -5,13 +5,18 @@ name: Deploy to the client-preview host
 # workflow the only way to update it is a hand-made FTP upload, which is how it came to
 # be ten commits behind the repo.
 #
-# Requires three repository secrets (Settings -> Secrets and variables -> Actions):
-#   FTP_SERVER    ftp.clear.muskokadigitalboost.ca
-#   FTP_USERNAME  the cPanel FTP account
-#   FTP_PASSWORD  its password
+# The host and account name are below in plain sight: neither is a credential, and
+# having them here means the workflow is readable without cross-referencing the
+# settings screen. Only the password is a secret:
+#
+#   FTP_PASSWORD  Settings -> Secrets and variables -> Actions
 #
 # Optionally a repository variable FTP_REMOTE_DIR if the document root is not
 # `public_html` (the cPanel default).
+
+env:
+  FTP_SERVER: ftp.clear.muskokadigitalboost.ca
+  FTP_USERNAME: clearmuskokadigi
 
 on:
   push:
@@ -91,8 +96,6 @@ jobs:
         # wrong directory that is destructive, so refuse to run unless the target looks
         # like the site we already serve.
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           REMOTE_DIR: ${{ steps.remote.outputs.dir }}
         run: |
@@ -116,8 +119,6 @@ jobs:
 
       - name: Mirror the site over FTPS
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           # lftp reads the password from this variable, so it never appears in a
           # command line or in the job's process list.
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
