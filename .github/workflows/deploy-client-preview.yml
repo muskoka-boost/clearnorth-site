@@ -21,7 +21,9 @@ env:
   # connecting by it means hostname verification passes instead of being switched off.
   # See .github/ftps-trust/README.md.
   FTP_SERVER: rev6.web-dns1.com
-  FTP_USERNAME: clearmuskokadigi
+  # A dedicated FTP account rooted at /home/clearmuskokadigi, so `public_html` below is
+  # relative to its login directory.
+  FTP_USERNAME: Yaba@clear.muskokadigitalboost.ca
   # System roots plus the two Let's Encrypt certificates the server does not send.
   FTP_CA_FILE: /tmp/ftps-ca.pem
 
