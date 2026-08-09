@@ -40,6 +40,10 @@ existed the client-preview host was updated by hand and drifted ten commits
 behind — missing all seven service pages and `/request-a-quote/`, and still
 serving the `/booking/` page the repo had removed.
 
+> **The FTPS deploy's `push:` trigger is commented out until its first dry run
+> has been read and the document root confirmed.** Uncommenting it is the
+> follow-up commit, and that push is the first real deploy.
+
 ### What the FTPS deploy needs
 
 One repository secret, `FTP_PASSWORD` (Settings → Secrets and variables →
