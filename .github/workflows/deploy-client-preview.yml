@@ -88,6 +88,27 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
+      - name: Inspect the FTPS certificate
+        # The host presents a self-signed certificate, so there is no public CA to check
+        # it against and `.github/ftps-cert.pem` is pinned instead. This prints what the
+        # server is actually offering, so a rotation shows up as a readable diff here
+        # rather than as "the certificate is NOT trusted" from lftp.
+        run: |
+          openssl s_client -starttls ftp -connect "$FTP_SERVER:21" \
+            -servername "$FTP_SERVER" -showcerts </dev/null 2>/dev/null > /tmp/ftps.txt || true
+          sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p' /tmp/ftps.txt > /tmp/ftps.pem
+          if [ ! -s /tmp/ftps.pem ]; then
+            echo "::error::Could not read a certificate from $FTP_SERVER:21"
+            sed -n '1,40p' /tmp/ftps.txt
+            exit 1
+          fi
+          echo "--- presented by $FTP_SERVER ---"
+          openssl x509 -in /tmp/ftps.pem -noout -subject -issuer -dates -fingerprint -sha256
+          echo "--- subject alternative names ---"
+          openssl x509 -in /tmp/ftps.pem -noout -ext subjectAltName || echo "(none)"
+          echo "--- PEM ---"
+          cat /tmp/ftps.pem
+
       - name: Resolve the remote directory
         id: remote
         env:
