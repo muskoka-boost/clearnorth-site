@@ -112,11 +112,21 @@ jobs:
               .github/ftps-trust/int-yr1.pem \
               .github/ftps-trust/root-yr.pem > "$FTP_CA_FILE"
 
-          openssl s_client -starttls ftp -connect "$FTP_SERVER:21" \
-            -servername "$FTP_SERVER" -showcerts </dev/null 2>/dev/null > /tmp/ftps.txt || true
+          # Bounded, and retried: the host has refused connections from a runner before,
+          # hanging until the kernel gave up two minutes later. Fail in seconds instead,
+          # and keep stderr — an empty capture file says nothing about why.
+          for attempt in 1 2 3; do
+            timeout 30 openssl s_client -starttls ftp -connect "$FTP_SERVER:21" \
+              -servername "$FTP_SERVER" -showcerts </dev/null >/tmp/ftps.txt 2>/tmp/ftps.err && break
+            echo "attempt $attempt: no certificate from $FTP_SERVER:21"
+            sed -n '1,10p' /tmp/ftps.err
+            [ "$attempt" = 3 ] || sleep 20
+          done
+
           sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p' /tmp/ftps.txt > /tmp/ftps.pem
           if [ ! -s /tmp/ftps.pem ]; then
-            echo "::error::Could not read a certificate from $FTP_SERVER:21"
+            echo "::error::Could not read a certificate from $FTP_SERVER:21 after 3 attempts. If this keeps happening the host is refusing the runner's IP — check cPHulk and any FTP firewall rules in cPanel."
+            sed -n '1,40p' /tmp/ftps.err
             sed -n '1,40p' /tmp/ftps.txt
             exit 1
           fi
