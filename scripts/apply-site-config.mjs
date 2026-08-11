@@ -112,7 +112,7 @@ function businessNode() {
     '@id': BUSINESS_ID,
     name: CONFIG.business.name,
     description:
-      'Hand-cleaned residential and commercial window cleaning, plus screens, tracks, gutters and exterior washing. Based in Hampton, Ontario.',
+      'Residential and commercial window cleaning done pane by pane, plus screens, tracks, gutters and exterior washing. Based in Hampton, Ontario.',
     url: url('/'),
     telephone: CONFIG.business.phone,
     email: CONFIG.business.email,
